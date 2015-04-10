@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>WCC</title>
+<title>OCNT</title>
 </head>
 <body>
 	<%
 		// New location to be redirected
-		String site = new String("http://localhost:8080/WCC/view/main_poc.html");
+		String site = new String("http://localhost:8080/OCNT/view/main.html");
 		response.setStatus(response.SC_MOVED_TEMPORARILY);
 		response.setHeader("Location", site);
 	%>

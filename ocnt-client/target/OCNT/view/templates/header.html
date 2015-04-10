@@ -1,46 +1,33 @@
-<nav>
-			<div class="mainNavBar ng-scope">
+<header>
+			<nav>
 				<div class="navbar navbar-default navbar-fixed-top">
 					<div class="row">
-						<div class="col-md-2 col-sm-2 navbar-header">
+						<div class="navbar-header">
 							<button type="button" class="navbar-toggle"
 								data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-									class="icon-bar"></span>
+								<span class="icon-bar"></span> 
 							</button>
-							<a class="navbar-brand" href="/WCC"></a>
+							<a class="navbar-brand" href="#"></a>
 						</div>
-						<div class="col-md-3 col-md-offset-2 col-sm-8 page-title">
-							Checkpoint Entry</div>
-						<div class="col-md-3 col-md-offset-1 greeting">
-							<div class="name">
-								Welcome, <a href="/wcc-web/profile"><span bindonce=""
-									bo-text="userName">Guest</span></a>
+						<div class="greeting">
+							<div class="name" style="display:inline;">
+								Welcome, 
+								<a href="#"><span>Guest</span></a>
 							</div>
-							<div id="currentLocation" class="" data-ng-show="showLocation">
-								Current location: <span bindonce="" class="location"
-									bo-text="location">INCHEON OUTSKIRT OF SEOUL, KOREA,
-									REPUBLIC OF (SOUTH K.)</span>
+							<div id="currentDateTime" class="">
+								Datetime:
 							</div>
-						</div>
-						<div class="col-md-1 col-sm-2 col-off header-menu">
-							<div class="collapse navbar-collapse">
-								<ul class="nav">
-									<li><a href="javascript:void(0)"
-										data-ng-click="confirmLogout()">Logout</a></li>
-									<li><a href="javascript:void(0)" class="dropdown-toggle"
-										data-toggle="dropdown"> Help&nbsp;<b class="caret"></b>
-									</a>
-										<ul class="dropdown-menu">
-											<li><a target="_blank"
-												href="/wcc-web/resources/Help/!SSL!/WebHelp/index.htm">
-													User Guide</a> <a href="#aboutModal" data-toggle="modal">
-													About</a></li>
-										</ul></li>
-								</ul>
+							<div id="currentFacility" class="">
+								Current Facility: <span>KULXPC</span>
+							</div>
+							<div id="currentRole" class="">
+								Role: <span>Facility Manager</span>
+							</div>
+							<div id="currentWorkstation" class="">
+								Workstation ID: <span></span>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</nav>
+			</nav>
+	</header>
