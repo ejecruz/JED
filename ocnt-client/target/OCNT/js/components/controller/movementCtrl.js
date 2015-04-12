@@ -2,7 +2,7 @@
 
 	ocnt.app = angular.module('OCNT');
 
-	ocnt.app.controller('CheckpointCtrl', [ '$scope', '$http',
+	ocnt.app.controller('movementCtrl', [ '$scope', '$http',
 			function($scope, $http) {
 				 $scope.myData = [{name: "Moroni", age: 50},
                      {name: "Tiancum", age: 43},

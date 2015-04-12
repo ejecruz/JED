@@ -1,16 +1,133 @@
 <link rel="stylesheet" type="text/css"
 	href="../css/bootstrap/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"	
+<link rel="stylesheet" type="text/css"
 	href="../css/font-awesome/css/font-awesome.css">
 <link rel="stylesheet" type="text/css"
 	href="../css/bootstrap/bootstrap-theme.css">
-<link rel="stylesheet" type="text/css"
-	href="../css/layout.css">
-<link rel="stylesheet" type="text/css"
-	href="../css/ng-grid.min.css">
-
-<div class="panel-dashboard" ng-controller="movementCtrl">
-	 <div ui-grid="gridOptions">
-		
-    </div>
+<link rel="stylesheet" type="text/css" href="../css/layout.css">
+<link rel="stylesheet" type="text/css" href="../css/ng-grid.min.css">
+<style type="text/css">
+.mvmntMenu .button {
+	background-color: #FFCC00;
+	font-weight: bold;
+	width: 105px;
+	height: 20px;
+	border: double 1px #A8A8A8;
+}
+</style>
+<div class="main">
+	<div class="homeMenu" style="text-align: right;">
+		<span class="icon icon-home" aria-hidden="true"></span> Selected Mode:
+		<select class="selectpicker">
+			<optgroup label="CONTAINERIZATION">
+				<option>Batch Mode</option>
+				<option>Selective Mode</option>
+				<option>Close Bag HU</option>
+				<option>Update HU</option>
+				<option>Merge HU</option>
+				<option>Empty HU</option>
+				<option>Arr & Transit Chkpnt</option>
+				<option>Decontainerize HU</option>
+				<option>Re-Open HU</option>
+			</optgroup>
+			<optgroup label="PRINT LABELS">
+				<option>Print HU Label</option>
+			</optgroup>
+			<optgroup label="Movement">
+				<option selected="selected">+ HU to MVMNT</option>
+				<option>- HU to MVMNT</option>
+				<option>Inbound Movement</option>
+			</optgroup>
+			<optgroup label="Query">
+				<option>Query Tree</option>
+			</optgroup>
+		</select>
+	</div>
+	<div class="content" ng-controller="movementCtrl as mc">
+		<div class="title">
+			<span style="color: #d70241; font-weight: bold;">Movement
+				Information</span>
+		</div>
+		<div class="mvmntMenu" style="margin-bottom: 10px;">
+			<div class="contenttable" style="width: 100%;">
+				<div style="display: inline;">
+					Day Range: <img src="../img/minus-16.png"> <input
+						id="frmMvmtSubmitDate:txtDtRange1" type="text"
+						name="frmMvmtSubmitDate:txtDtRange1" value="30"
+						onfocus="this.select()" onkeydown="enterKeySubmitDayRange(event)"
+						style="width: 30px; text-align: center;"> <input
+						id="frmMvmtSubmitDate:txtDtRange2" type="text"
+						name="frmMvmtSubmitDate:txtDtRange2" value="30"
+						onfocus="this.select()" onkeydown="enterKeySubmitDayRange(event)"
+						style="width: 30px; text-align: center;"> <img
+						src="../img/plus-16.png"> <input
+						id="frmMvmtSubmitDate:search" type="submit"
+						name="frmMvmtSubmitDate:search" value="Search" class="button"
+						onclick="submitDayRange();">
+				</div>
+				<div style="display: inline; float: right;">
+					<p style="display: inline;">You are currently in Edit Mode</p>
+					<input id="frmMvmtSubmitDate:view" type="submit"
+						name="frmMvmtSubmitDate:view" value="Switch Mode" class="button"
+						style="display: inline;">
+				</div>
+			</div>
+		</div>
+		<table class="table" st-pipe="mc.callServer" st-table="mc.displayed">
+			<thead>
+				<tr>
+					<th st-sort="opt">OPT</th>
+					<th st-sort="mvmntNo">Movement No</th>
+					<th st-sort="trnsptReg">TRANSPT REG</th>
+					<th st-sort="trnsptType">TRANSPT TYPE</th>
+					<th st-sort="std">S.T.D</th>
+					<th st-sort="dest">DESTINATION</th>
+					<th st-sort="mawb">MAWB</th>
+					<th st-sort="mfst">MFST</th>
+					<th st-sort="cutofftime">CUT OFF TIME</th>
+					<th st-sort="status">STATUS</th>
+				</tr>
+				<tr>
+					<th></th>
+					<th><input st-search="mvmntNo" /></th>
+					<th></th>
+					<th></th>
+					<th><input st-search="std" /></th>
+					<th><input st-search="dest" /></th>
+					<th></th>
+					<th><input st-search="mfst" /></th>
+					<th><input st-search="cutofftime" /></th>
+					<th><input st-search="status" /></th>
+				</tr>
+			</thead>
+			<tbody ng-show="!mc.isLoading">
+				<tr ng-repeat="row in mc.displayed">
+					<td>{{row.opt}}</td>
+					<td>{{row.mvmntNo}}</td>
+					<td>{{row.trnsptReg}}</td>
+					<td>{{row.trnsptType}}</td>
+					<td>{{row.std}}</td>
+					<td>{{row.dest}}</td>
+					<td>{{row.mawb}}</td>
+					<td>{{row.mfst}}</td>
+					<td>{{row.cutofftime}}</td>
+					<td>{{row.status}}</td>
+				</tr>
+			</tbody>
+			<tbody ng-show="mc.isLoading">
+				<tr>
+					<td colspan="4" class="text-center">Loading ...</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td class="text-center" st-pagination="" st-items-by-page="10"
+						colspan="10"></td>
+				</tr>
+			</tfoot>
+		</table>
+		<div>Operation: 4 = Allocate/Deallocate HU's, 5 = Offload MAWB,
+			7 = Close Movement, 10 = Depart Movement, 12 = Reopen Movement, T =
+			HU Transfer</div>
+	</div>
 </div>

@@ -3,15 +3,15 @@ angular
 	.module('OCNT',['ui.router','ui.bootstrap','ngGrid','cfp.hotkeys']);
 
 ocnt.app = angular.module('OCNT');
+
+
 ocnt.app.config(['$urlRouterProvider','$stateProvider',
 	                         function($urlRouterProvider,$stateProvider){
 	                	$urlRouterProvider.otherwise('/home');
 	                	$stateProvider.state('home',{
 	                		url:'/home',
 	                		templateUrl: '/ocnt-client/view/modules/homeTab.html',
-	                		hotkeys: [
-	                		          ['v','movement','']
-	                		          ]
+	                		controller: 'homeCtrl'
 	                	});
 	                	$stateProvider.state('movementPlus',{
 	                		url:'/movementPlus',
