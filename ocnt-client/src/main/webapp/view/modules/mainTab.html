@@ -1,0 +1,12 @@
+<div class="mainTabClass">
+	<tabset> 
+	<tab ng-repeat="tab in tabs" heading="{{tab.title}}"
+		active="tab.active">
+	<div class="row-header" style="display:inline">
+		<span class="icon icon-home" aria-hidden="true"></span> 
+	</div>
+	<p style="display:inline;">Please select the operation you want to perform<p/>
+		<div ng-include="tab.template"></div>
+	</tab> 
+	</tabset>
+</div>

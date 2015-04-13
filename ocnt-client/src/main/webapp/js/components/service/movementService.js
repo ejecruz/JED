@@ -9,8 +9,10 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout', function ($q, 
 		var stdVal = ":00"
 		var destination = ['SINHUB','ICNGTW'];
 		var mfstVal = ['ALL'];
+		var optValues = ['','4','5','7','10','12','T'];
 		return {
 			id: id,
+			opt: optValues,
 			mvmntNo: movementNo + Math.floor(Math.random() * 100),
 			trnsptReg:'',
 			trnsptType:'C',
@@ -48,7 +50,7 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout', function ($q, 
 				numberOfPages: Math.ceil(1000 / number)
 			});
 		}, 1500);
-
+		
 
 		return deferred.promise;
 	}

@@ -22,6 +22,7 @@
 		   tableState.pagination.numberOfPages = result.numberOfPages;
 		   ctrl.isLoading = false;
 		 });
+		 
 		};
 	}]);
 })(window.ocnt = window.ocnt || {}); 

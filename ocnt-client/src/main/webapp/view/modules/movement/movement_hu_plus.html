@@ -51,19 +51,11 @@
 		<div class="mvmntMenu" style="margin-bottom: 10px;">
 			<div class="contenttable" style="width: 100%;">
 				<div style="display: inline;">
-					Day Range: <img src="../img/minus-16.png"> <input
-						id="frmMvmtSubmitDate:txtDtRange1" type="text"
-						name="frmMvmtSubmitDate:txtDtRange1" value="30"
-						onfocus="this.select()" onkeydown="enterKeySubmitDayRange(event)"
-						style="width: 30px; text-align: center;"> <input
-						id="frmMvmtSubmitDate:txtDtRange2" type="text"
-						name="frmMvmtSubmitDate:txtDtRange2" value="30"
-						onfocus="this.select()" onkeydown="enterKeySubmitDayRange(event)"
-						style="width: 30px; text-align: center;"> <img
-						src="../img/plus-16.png"> <input
-						id="frmMvmtSubmitDate:search" type="submit"
-						name="frmMvmtSubmitDate:search" value="Search" class="button"
-						onclick="submitDayRange();">
+					Day Range: <img src="../img/minus-16.png"> <input type="text"
+						value="30" style="width: 30px; text-align: center;"> <input
+						type="text" value="30" style="width: 30px; text-align: center;">
+					<img src="../img/plus-16.png"> <input type="submit"
+						value="Search" class="button">
 				</div>
 				<div style="display: inline; float: right;">
 					<p style="display: inline;">You are currently in Edit Mode</p>
@@ -93,16 +85,27 @@
 					<th></th>
 					<th></th>
 					<th><input st-search="std" /></th>
-					<th><input st-search="dest" /></th>
+					<th>
+						<input st-search="dest" />
+					</th>
 					<th></th>
-					<th><input st-search="mfst" /></th>
+					<th>
+					 <select>
+					 	<option></option>
+					 	<option>SINHUB</option>
+					 </select>
+					</th>
 					<th><input st-search="cutofftime" /></th>
 					<th><input st-search="status" /></th>
 				</tr>
 			</thead>
 			<tbody ng-show="!mc.isLoading">
 				<tr ng-repeat="row in mc.displayed">
-					<td>{{row.opt}}</td>
+					<td>
+					 <select>
+					 	<option ng-repeat="opt in row.opt">{{opt}}</option>
+					 </select>
+					</td>
 					<td>{{row.mvmntNo}}</td>
 					<td>{{row.trnsptReg}}</td>
 					<td>{{row.trnsptType}}</td>

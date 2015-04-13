@@ -475,27 +475,27 @@
 }
 /*# sourceMappingURL=bootstrap-theme.css.map */
 
-.tab {
+.mainTabClass {
 	margin: 90px 200px 30px 200px;
 	padding: 10px;
     position:relative;
 }
 
-.nav .active > a{
+.mainTabClass .active > a{
     background-color: #FFCD41 !important;
 	font-weight: bold;
 	color: #000;
 	font-size: 11pt;
 }
 
-.nav  :not(.active) a {
+.mainTabClass  :not(.active) a {
     background-color: #D6003F;
 	font-weight: bold;
 	color:#fff;
 	font-size: 11pt;
 }
 
-.nav  :not(.active) a :hover{
+.mainTabClass  :not(.active) a:hover{
     background-color: #FFCD41 !important;
 	font-weight: bold;
 	color: #000;
@@ -540,7 +540,7 @@
 }
 
 .row-header,.main .icon {
-    font-size: 48px;
+	font-size: 48px;
 	color: #FCD208;
 }
 
@@ -560,8 +560,7 @@
 .main {
   height: 620px;
   width: 900px;
-  margin-left: 200px;
-  margin-right: 100px;
+  margin-left: 130px;
   margin-top: 90px;
 }
 .content {

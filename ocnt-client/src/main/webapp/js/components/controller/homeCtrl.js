@@ -2,28 +2,66 @@
 
 	ocnt.app = angular.module('OCNT');
 
-	ocnt.app.controller('homeCtrl', [ '$scope','hotkeys','$state',
-			function($scope,hotkeys,$state) {
-		hotkeys.add({
-		    combo: 'v',
-		    description: 'Movement',
-		    callback: function() {
-		      $('*[aria-controls="movement"]').tab('show');
-		    }
-		});
-		hotkeys.add({
-		    combo: 'c',
-		    description: 'Containerization',
-		    callback: function() {
-		      $('*[aria-controls="containerization"]').tab('show');
-		    }
-		});
-		hotkeys.add({
-		    combo: '1',
-		    description: 'Movement Plus',
-		    callback: function() {
-		    	$state.go('movementPlus');
-		    }
-		});
-			} ]);
+	ocnt.app
+			.controller(
+					'homeCtrl',
+					[
+							'$scope',
+							'hotkeys',
+							'$state',
+							function($scope, hotkeys, $state) {
+								
+								addDynamicTabs();
+								addHotkeys();
+								
+								function addDynamicTabs() {
+									$scope.tabs = [
+											{
+												"title" : "(C)ontainerization",
+												"template" : "/ocnt-client/view/modules/containerTab.html",
+												"active": true
+											}, {
+												"title" : "(P)rint Labels",
+												"template" : "/ocnt-client/view/modules/prntLblTab.html",
+												"active": false
+											}, {
+												"title" : "Mo(v)ement",
+												"template" : "/ocnt-client/view/modules/movementTab.html",
+												"active": false
+											}, {
+												"title" : "(Q)uery",
+												"template" : "/ocnt-client/view/modules/queryTab.html",
+												active: false
+											}, {
+												"title" : "(M)aintenance",
+												"template" : "/ocnt-client/view/modules/maintenanceTab.html",
+												active: false
+											} ];
+								}
+								
+								function addHotkeys(){
+									hotkeys.add({
+										combo : 'v',
+										description : 'Movement',
+										callback : function() {
+											$scope.tabs[2].active = true;
+										}
+									});
+									hotkeys
+											.add({
+												combo : 'c',
+												description : 'Containerization',
+												callback : function() {
+													$scope.tabs[0].active = true;
+												}
+											});
+									hotkeys.add({
+										combo : '1',
+										description : 'Movement Plus',
+										callback : function() {
+											$state.go('movementPlus');
+										}
+									});
+								}
+							} ]);
 })(window.ocnt = window.ocnt || {});
