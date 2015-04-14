@@ -10,12 +10,12 @@ ocnt.app.config(['$urlRouterProvider','$stateProvider',
 	                	$urlRouterProvider.otherwise('/home');
 	                	$stateProvider.state('home',{
 	                		url:'/home',
-	                		templateUrl: '/ocnt-client/view/modules/mainTab.html',
+	                		templateUrl: '/OCNT/view/modules/mainTab.html',
 	                		controller: 'homeCtrl'
 	                	});
 	                	$stateProvider.state('movementPlus',{
 	                		url:'/movementPlus',
-	                		templateUrl: '/ocnt-client/view/modules/movement/movement_hu_plus.html',
+	                		templateUrl: '/OCNT/view/modules/movement/movement_hu_plus.html',
 	                		controller: 'movementCtrl'
 	                	});
 					}]);
