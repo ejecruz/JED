@@ -30,6 +30,11 @@
 	<dependencies>
 		<dependency>
 				<groupId>com.dhl.ocnt</groupId>
+				<artifactId>ocnt-beans</artifactId>
+				<version>${project.version}</version>
+		</dependency>
+		<dependency>
+				<groupId>com.dhl.ocnt</groupId>
 				<artifactId>ocnt-ws</artifactId>
 				<version>${project.version}</version>
 		</dependency>
@@ -37,6 +42,7 @@
 	</dependencyManagement>
 	
 	<modules>
+		<module>../ocnt-beans</module>
 		<module>../ocnt-ws</module>
         <module>../ocnt-client</module>
     </modules>
