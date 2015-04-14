@@ -1,6 +1,6 @@
 (function(ocnt){
 angular
-	.module('OCNT',['ui.router','ui.bootstrap','ngGrid','cfp.hotkeys']);
+	.module('OCNT',['ui.router','ui.bootstrap','smart-table','cfp.hotkeys']);
 
 ocnt.app = angular.module('OCNT');
 
@@ -10,7 +10,7 @@ ocnt.app.config(['$urlRouterProvider','$stateProvider',
 	                	$urlRouterProvider.otherwise('/home');
 	                	$stateProvider.state('home',{
 	                		url:'/home',
-	                		templateUrl: '/ocnt-client/view/modules/homeTab.html',
+	                		templateUrl: '/ocnt-client/view/modules/mainTab.html',
 	                		controller: 'homeCtrl'
 	                	});
 	                	$stateProvider.state('movementPlus',{

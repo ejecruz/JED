@@ -14,6 +14,24 @@
 	height: 20px;
 	border: double 1px #A8A8A8;
 }
+
+nav>.ng-scope {
+	height: 20px;
+}
+
+nav>.ng-scope ul {
+	margin: 0 0 0 0;
+	height: 20px;
+}
+
+.select-page {
+  width: 50px;
+  text-align: center;
+}
+.pagination li a input {
+  padding: 0;
+  margin: -5px 0;
+}
 </style>
 <div class="main">
 	<div class="homeMenu" style="text-align: right;">
@@ -85,27 +103,25 @@
 					<th></th>
 					<th></th>
 					<th><input st-search="std" /></th>
-					<th>
-						<input st-search="dest"/>
-					</th>
+					<th><select st-search="dest">
+							<option></option>
+							<option>SINHUB</option>
+							<option>ICNGTW</option>
+					</select></th>
 					<th></th>
-					<th>
-					 <select st-search="mfst">
-					 	<option></option>
-					 	<option></option>
-					 </select>
-					</th>
+					<th><select st-search="mfst">
+							<option></option>
+							<option></option>
+					</select></th>
 					<th><input st-search="cutofftime" /></th>
 					<th><input st-search="status" /></th>
 				</tr>
 			</thead>
 			<tbody ng-show="!mc.isLoading">
 				<tr ng-repeat="row in mc.displayed">
-					<td>
-					 <select>
-					 	<option ng-repeat="opt in row.opt">{{opt}}</option>
-					 </select>
-					</td>
+					<td><select>
+							<option ng-repeat="opt in row.opt">{{opt}}</option>
+					</select></td>
 					<td>{{row.mvmntNo}}</td>
 					<td>{{row.trnsptReg}}</td>
 					<td>{{row.trnsptType}}</td>
@@ -122,10 +138,12 @@
 					<td colspan="4" class="text-center">Loading ...</td>
 				</tr>
 			</tbody>
-			<tfoot>
-				<tr>
-					<td class="text-center" st-pagination="" st-items-by-page="10"
-						colspan="10"></td>
+			<tfoot style="height: 20px;">	
+				<tr style="height: 20px;">
+					<td class="text-center"
+						colspan="10" style="background-color: #FFD900; height: 20px;">
+						<div style="height:20px;" st-items-by-page="10" st-pagination="" st-template="/ocnt-client/view/modules/movement/pagination.custom.html"></div>
+					</td>
 				</tr>
 			</tfoot>
 		</table>
