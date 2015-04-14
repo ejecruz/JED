@@ -595,7 +595,7 @@
 	width: auto;
 }
 
-.table input {
+.table th > input {
 	width: 100%;
 }
 
