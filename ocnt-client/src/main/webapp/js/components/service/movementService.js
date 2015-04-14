@@ -3,7 +3,7 @@
 ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', function ($q, $filter, $timeout,$http) {
 
 	var items = [];
-	$http.post('http://localhost:8080/ocnt-client/rest/movement/generateJson').
+	$http.post('http://localhost:8080/ocnt-ws/rest/movement/generateJson').
 	then(function(response){
 		alert("Http Status:" +response.statusText+
 				"Data Received from Server:"+JSON.stringify(response.data));
