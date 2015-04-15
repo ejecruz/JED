@@ -1,10 +1,6 @@
 package com.dhl.ocnt.webservice.json;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -14,8 +10,8 @@ import javax.ws.rs.core.Response;
 
 import org.apache.log4j.Logger;
 
-import com.dhl.ocnt.model.Filter;
 import com.dhl.ocnt.model.Movement;
+import com.dhl.ocnt.model.MovementWrapped;
 import com.dhl.webservice.dummy.CreateDummyData;
 
 @Path("/movement")
@@ -27,11 +23,11 @@ public class MovementWebServiceJson {
 	@POST
 	@Path("generateJson")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Movement> getDataAsJson(){
+	public MovementWrapped getDataAsJson(){
 		
 		System.out.println("getDataAsJson()");
 		
-		List<Movement> movementList = new ArrayList<Movement>();
+		MovementWrapped movementList = new MovementWrapped();
 		
 		movementList = CreateDummyData.createDummyData();
 		
@@ -43,10 +39,10 @@ public class MovementWebServiceJson {
 	@POST
 	@Path("generateJson/{plus_date}/{minus_date}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Movement> getDataAsJson(@PathParam("plus_date") String plus_date, 
+	public MovementWrapped getDataAsJson(@PathParam("plus_date") String plus_date, 
 											@PathParam("minus_date") String minus_date){
 		
-		List<Movement> movementList = new ArrayList<Movement>();
+		MovementWrapped movementList = new MovementWrapped();
 		
 		System.out.println("getDataAsJson() With Parameters");
 		System.out.println("plus_date: "+plus_date);
@@ -59,22 +55,6 @@ public class MovementWebServiceJson {
 		return movementList;
 	}
 	
-	@POST
-	@Path("getDestFilterAsJson")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Filter getDestFilterAsJson(){
-		
-		Filter destFilterList = new Filter();
-		
-		System.out.println("getDestFilterAsJson");
-
-		
-		destFilterList = CreateDummyData.getDestFilterList();
-		
-		//http://localhost:8080/ocnt-ws/rest/movement/getDestFilterAsJson
-		
-		return destFilterList;
-	}
 	
 	
 	@POST

@@ -4,19 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.dhl.ocnt.model.Filter;
 import com.dhl.ocnt.model.Movement;
+import com.dhl.ocnt.model.MovementWrapped;
 
 public class CreateDummyData {
 	
 
 	
 	//create dummy data
-	public static List<Movement> createDummyData(){
+	public static MovementWrapped createDummyData(){
+		
+		MovementWrapped mv_wrapped = new MovementWrapped();
 		List<Movement> mvList = new ArrayList<Movement>();
 		
 		int no_records = randInt(100, 1000);
 		int no_pages = no_records/10;
+		
+		mv_wrapped.setTotalNoOfPage(no_pages);
+		mv_wrapped.setTotalNoOfRec(no_records);
+		mv_wrapped.setDest_filter_dropdown(getDestFilterList());
 		
 		//create ramdom data
 		for(int i = 0; i<no_records; i++){
@@ -34,8 +40,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OP");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else if((i%(randInt(1, 9))) == 0){
 				mv.setOperation("");
@@ -48,8 +52,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OX");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else if((i%(randInt(1, 9))) == 0){
 				mv.setOperation("");
@@ -62,8 +64,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OJ");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else if((i%(randInt(1, 9))) == 0){
 				mv.setOperation("");
@@ -76,8 +76,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OU");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else if((i%(randInt(1, 9))) == 0){
 				mv.setOperation("");
@@ -90,8 +88,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OY");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else if((i%(randInt(1, 9))) == 0){
 				mv.setOperation("");
@@ -104,8 +100,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OT");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else if((i%(randInt(1, 9))) == 0){
 				mv.setOperation("");
@@ -118,8 +112,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OR");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else if((i%(randInt(1, 9))) == 0){
 				mv.setOperation("");
@@ -132,8 +124,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OD");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else{
 				mv.setOperation("");
@@ -146,23 +136,30 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OV");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			
 			mvList.add(mv);
 		}
 		
-		return mvList;
+		mv_wrapped.setMv_data(mvList);
+		
+		return mv_wrapped;
 	}
 	
 	//create dummy data with parameters
-	public static List<Movement> createDummyData(String plus_date, String minus_date){
+	public static MovementWrapped createDummyData(String plus_date, String minus_date){
 		
+		MovementWrapped mv_wrapped = new MovementWrapped();
 		List<Movement> mvList = new ArrayList<Movement>();
 		
 		int no_records = randInt(100, 1000);
 		int no_pages = no_records/10;
+		
+		mv_wrapped.setTotalNoOfPage(no_pages);
+		mv_wrapped.setTotalNoOfRec(no_records);
+		mv_wrapped.setDest_filter_dropdown(getDestFilterList());
+		mv_wrapped.setMinus_date(minus_date);
+		mv_wrapped.setPlus_date(plus_date);
 		
 		//create ramdom data
 		for(int i = 0; i<no_records; i++){
@@ -180,8 +177,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OP");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else if((i%8) == 0){
 				mv.setOperation("");
@@ -194,8 +189,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OX");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else if((i%7) == 0){
 				mv.setOperation("");
@@ -208,8 +201,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OJ");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else if((i%6) == 0){
 				mv.setOperation("");
@@ -222,8 +213,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OU");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else if((i%5) == 0){
 				mv.setOperation("");
@@ -236,8 +225,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OY");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else if((i%4) == 0){
 				mv.setOperation("");
@@ -250,8 +237,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OT");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else if((i%3) == 0){
 				mv.setOperation("");
@@ -264,8 +249,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OR");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else if((i%2) == 0){
 				mv.setOperation("");
@@ -278,8 +261,6 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OD");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
 			else{
 				mv.setOperation("");
@@ -292,32 +273,26 @@ public class CreateDummyData {
 				mv.setMfst("");
 				mv.setCutOffTime("22:50/13");
 				mv.setStatus("OV");
-				mv.setTotalNoOfPage(no_pages);
-				mv.setTotalNoOfRec(no_records);
 			}
-			
-			mv.setPlus_date(plus_date);
-			mv.setMinus_date(minus_date);
 			
 			mvList.add(mv);
 		}
 		
-		return mvList;
+		mv_wrapped.setMv_data(mvList);
+		
+		return mv_wrapped;
 	}
 	
-	public static Filter getDestFilterList(){
+	public static List<String> getDestFilterList(){
 		
 		List<String> dest_fil = new ArrayList<String>();
-		Filter fil = new Filter();
 		
 		dest_fil.add("<ALL>");
 		dest_fil.add("SINHUB");
 		dest_fil.add("KULGTW");
 		dest_fil.add("ICNGTW");
 		
-		fil.setDest_filter_dropdown(dest_fil);
-		
-		return fil;
+		return dest_fil;
 		
 	}
 	

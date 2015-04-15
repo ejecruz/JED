@@ -14,46 +14,11 @@ public class Movement {
 	private String mfst;
 	private String cutOffTime;
 	private String status;
-	private String plus_date;
-	private String minus_date;
-	private int totalNoOfRec;
-	private int totalNoOfPage;
+
 
 	
 	public Movement(){
 		
-	}
-	
-	public int getTotalNoOfRec() {
-		return totalNoOfRec;
-	}
-
-	public void setTotalNoOfRec(int totalNoOfRec) {
-		this.totalNoOfRec = totalNoOfRec;
-	}
-
-	public int getTotalNoOfPage() {
-		return totalNoOfPage;
-	}
-
-	public void setTotalNoOfPage(int totalNoOfPage) {
-		this.totalNoOfPage = totalNoOfPage;
-	}
-	
-	public String getPlus_date() {
-		return plus_date;
-	}
-
-	public void setPlus_date(String plus_date) {
-		this.plus_date = plus_date;
-	}
-
-	public String getMinus_date() {
-		return minus_date;
-	}
-
-	public void setMinus_date(String minus_date) {
-		this.minus_date = minus_date;
 	}
 
 	public String getOperation() {
