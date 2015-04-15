@@ -10,6 +10,23 @@ public class MovementWrapped {
 	private List<String> dest_filter_dropdown;
 	private String plus_date;
 	private String minus_date;
+	private List<String> opt_filter_dropdown;
+	
+	public List<Movement> getList_mv_data() {
+		return list_mv_data;
+	}
+
+	public void setList_mv_data(List<Movement> list_mv_data) {
+		this.list_mv_data = list_mv_data;
+	}
+
+	public List<String> getOpt_filter_dropdown() {
+		return opt_filter_dropdown;
+	}
+
+	public void setOpt_filter_dropdown(List<String> opt_filter_dropdown) {
+		this.opt_filter_dropdown = opt_filter_dropdown;
+	}
 	
 	public String getPlus_date() {
 		return plus_date;
@@ -35,12 +52,6 @@ public class MovementWrapped {
 		this.dest_filter_dropdown = dest_filter_dropdown;
 	}
 	
-	public List<Movement> getMv_data() {
-		return list_mv_data;
-	}
-	public void setMv_data(List<Movement> mv_data) {
-		this.list_mv_data = mv_data;
-	}
 	public int getTotalNoOfRec() {
 		return totalNoOfRec;
 	}

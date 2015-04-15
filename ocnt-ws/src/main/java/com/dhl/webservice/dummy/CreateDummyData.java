@@ -23,6 +23,7 @@ public class CreateDummyData {
 		mv_wrapped.setTotalNoOfPage(no_pages);
 		mv_wrapped.setTotalNoOfRec(no_records);
 		mv_wrapped.setDest_filter_dropdown(getDestFilterList());
+		mv_wrapped.setOpt_filter_dropdown(getOptFilterList());
 		
 		//create ramdom data
 		for(int i = 0; i<no_records; i++){
@@ -141,7 +142,7 @@ public class CreateDummyData {
 			mvList.add(mv);
 		}
 		
-		mv_wrapped.setMv_data(mvList);
+		mv_wrapped.setList_mv_data(mvList);
 		
 		return mv_wrapped;
 	}
@@ -158,6 +159,7 @@ public class CreateDummyData {
 		mv_wrapped.setTotalNoOfPage(no_pages);
 		mv_wrapped.setTotalNoOfRec(no_records);
 		mv_wrapped.setDest_filter_dropdown(getDestFilterList());
+		mv_wrapped.setOpt_filter_dropdown(getOptFilterList());
 		mv_wrapped.setMinus_date(minus_date);
 		mv_wrapped.setPlus_date(plus_date);
 		
@@ -278,7 +280,7 @@ public class CreateDummyData {
 			mvList.add(mv);
 		}
 		
-		mv_wrapped.setMv_data(mvList);
+		mv_wrapped.setList_mv_data(mvList);
 		
 		return mv_wrapped;
 	}
@@ -293,6 +295,21 @@ public class CreateDummyData {
 		dest_fil.add("ICNGTW");
 		
 		return dest_fil;
+		
+	}
+	
+	public static List<String> getOptFilterList(){
+		
+		List<String> opt_fil = new ArrayList<String>();
+		
+		opt_fil.add("4");
+		opt_fil.add("5");
+		opt_fil.add("7");
+		opt_fil.add("10");
+		opt_fil.add("12");
+		opt_fil.add("T");
+		
+		return opt_fil;
 		
 	}
 	
