@@ -16,10 +16,28 @@ public class Movement {
 	private String status;
 	private String plus_date;
 	private String minus_date;
+	private int totalNoOfRec;
+	private int totalNoOfPage;
 
 	
 	public Movement(){
 		
+	}
+	
+	public int getTotalNoOfRec() {
+		return totalNoOfRec;
+	}
+
+	public void setTotalNoOfRec(int totalNoOfRec) {
+		this.totalNoOfRec = totalNoOfRec;
+	}
+
+	public int getTotalNoOfPage() {
+		return totalNoOfPage;
+	}
+
+	public void setTotalNoOfPage(int totalNoOfPage) {
+		this.totalNoOfPage = totalNoOfPage;
 	}
 	
 	public String getPlus_date() {
