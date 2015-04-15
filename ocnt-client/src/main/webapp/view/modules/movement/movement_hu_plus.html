@@ -86,24 +86,24 @@ nav>.ng-scope ul {
 		<table class="table" st-pipe="mc.callServer" st-table="mc.displayed">
 			<thead>
 				<tr>
-					<th st-sort="opt">OPT</th>
-					<th st-sort="mvmntNo">Movement No</th>
-					<th st-sort="trnsptReg">TRANSPT REG</th>
-					<th st-sort="trnsptType">TRANSPT TYPE</th>
+					<th st-sort="operation">OPT</th>
+					<th st-sort="movementNo">Movement No</th>
+					<th st-sort="transptReg">TRANSPT REG</th>
+					<th st-sort="transptType">TRANSPT TYPE</th>
 					<th st-sort="std">S.T.D</th>
-					<th st-sort="dest">DESTINATION</th>
+					<th st-sort="destination">DESTINATION</th>
 					<th st-sort="mawb">MAWB</th>
 					<th st-sort="mfst">MFST</th>
-					<th st-sort="cutofftime">CUT OFF TIME</th>
+					<th st-sort="cutOffTime">CUT OFF TIME</th>
 					<th st-sort="status">STATUS</th>
 				</tr>
 				<tr>
 					<th></th>
-					<th><input st-search="mvmntNo" /></th>
+					<th><input st-search="movementNo" /></th>
 					<th></th>
 					<th></th>
 					<th><input st-search="std" /></th>
-					<th><select st-search="dest">
+					<th><select st-search="destination">
 							<option></option>
 							<option>SINHUB</option>
 							<option>ICNGTW</option>
@@ -113,23 +113,23 @@ nav>.ng-scope ul {
 							<option></option>
 							<option></option>
 					</select></th>
-					<th><input st-search="cutofftime" /></th>
+					<th><input st-search="cutOffTime" /></th>
 					<th><input st-search="status" /></th>
 				</tr>
 			</thead>
 			<tbody ng-show="!mc.isLoading">
 				<tr ng-repeat="row in mc.displayed">
 					<td><select>
-							<option ng-repeat="opt in row.opt">{{opt}}</option>
+							<option ng-repeat="opt in row.operation">{{operation}}</option>
 					</select></td>
-					<td>{{row.mvmntNo}}</td>
-					<td>{{row.trnsptReg}}</td>
-					<td>{{row.trnsptType}}</td>
+					<td>{{row.movementNo}}</td>
+					<td>{{row.transptReg}}</td>
+					<td>{{row.transptType}}</td>
 					<td>{{row.std}}</td>
-					<td>{{row.dest}}</td>
+					<td>{{row.destination}}</td>
 					<td>{{row.mawb}}</td>
 					<td>{{row.mfst}}</td>
-					<td>{{row.cutofftime}}</td>
+					<td>{{row.cutOffTime}}</td>
 					<td>{{row.status}}</td>
 				</tr>
 			</tbody>

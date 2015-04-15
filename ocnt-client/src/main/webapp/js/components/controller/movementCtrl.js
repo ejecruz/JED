@@ -1,5 +1,4 @@
 (function(ocnt) {
-
 	ocnt.app = angular.module('OCNT');
 
 	ocnt.app.controller('movementCtrl', [ '$scope', '$http','hotkeys','$state','MovementService',
@@ -10,18 +9,17 @@
 
 		 this.callServer = function callServer(tableState) {
 
-		 ctrl.isLoading = true;
+			 ctrl.isLoading = true;
 
-		 var pagination = tableState.pagination;
+			 var pagination = tableState.pagination;
 
-		 var start = pagination.start || 0;   
-		 var number = pagination.number || 10; 
-
-		 service.getPage(start, number, tableState).then(function (result) {
-		   ctrl.displayed = result.data;
-		   tableState.pagination.numberOfPages = result.numberOfPages;
-		   ctrl.isLoading = false;
-		 });
+			 var start = pagination.start || 0;   
+			 var number = pagination.number || 10; 
+			 service.getPage(start, number, tableState).then(function (result) {
+				 ctrl.displayed = result.data;
+				 tableState.pagination.numberOfPages = result.numberOfPages;
+				 ctrl.isLoading = false;
+			 });
 		 
 		};
 	}]);

@@ -2,12 +2,7 @@
     <wb-module deploy-name="ocnt-client">
         <wb-resource deploy-path="/" source-path="/src/main/webapp/WEB-INF"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-        <dependent-module archiveName="ocnt-beans-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ocnt-beans/ocnt-beans">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ocnt-ws-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ocnt-ws/ocnt-ws">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <property name="context-root" value="ocnt-client"/>
         <property name="java-output-path" value="/ocnt-client/target/classes"/>
     </wb-module>
