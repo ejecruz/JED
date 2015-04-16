@@ -104,6 +104,7 @@ nav>.ng-scope ul {
 					<th></th>
 					<th><input st-search="std" /></th>
 					<th><select st-search="destination">
+							<option></option>
 							<option ng-repeat="val in mc.dest_filter">{{val}}</option>
 					</select></th>
 					<th></th>
@@ -118,6 +119,7 @@ nav>.ng-scope ul {
 			<tbody ng-show="!mc.isLoading">
 				<tr ng-repeat="row in mc.displayed">
 					<td><select>
+							<option></option>
 							<option ng-repeat="operation in mc.opt_filter">{{operation}}</option>
 					</select></td>
 					<td>{{row.movementNo}}</td>
