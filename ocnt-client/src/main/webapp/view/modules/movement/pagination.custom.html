@@ -1,9 +1,13 @@
 <nav ng-if="pages.length >= 2">
-	<ul class="pagination">
-		<li><a ng-click="selectPage(1)">First</a></li>
-		<li><a ng-click="selectPage(currentPage - 1)">&lt;</a></li>
-		<li><a><page-select></page-select> of {{numPages}}</a></li>
-		<li><a ng-click="selectPage(currentPage + 1)">&gt;</a></li>
-		<li><a ng-click="selectPage(numPages)">Last</a></li>
-	</ul>
+	<div class="page_panel_left" style="display:inline;float:left;">
+		Total Records:{{totalNoOfRec}}
+	</div>
+	<div class="page_panel_center" style="display:inline;">
+		<a ng-click="selectPage(1)"><img src="/ocnt-client/img/firstDisabled.gif"/></a>
+		<a ng-click="selectPage(currentPage - 1)"><img src="/ocnt-client/img/prevDisabled.gif"/></a>
+		<a>Page <page-select></page-select> of {{numPages}}</a>
+		<a ng-click="selectPage(currentPage + 1)"><img src="/ocnt-client/img/next.gif"/></a>
+		<a ng-click="selectPage(numPages)"><img src="/ocnt-client/img/last.gif"/></a>
+	</div>
+	<div class="page_panel_right" style="display:inline;float:right;"></div>
 </nav>

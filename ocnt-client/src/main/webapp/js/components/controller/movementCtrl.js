@@ -15,9 +15,10 @@
 
 			 var start = pagination.start || 0;   
 			 var number = pagination.number || 10; 
-			 service.getPage(start, number, tableState).then(function (result) {
+			 service.retrievePageRecords(start, number, tableState,null).then(function (result) {
+				 tableState.pagination.numberOfPages = result.totalNoOfPage;
+				 scope.totalNoOfRec = result.totalNoOfRec;
 				 ctrl.displayed = result.data;
-				 tableState.pagination.numberOfPages = result.numberOfPages;
 				 ctrl.isLoading = false;
 			 });
 		 
