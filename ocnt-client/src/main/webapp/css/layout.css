@@ -34,7 +34,11 @@ dd {
 
 a, a:hover,
 .link, .link:hover {
-    color: #cc0000;
+	font-size:9pt;
+	font-weight:bold;
+	color:#404040;
+	font-family:Helvetica;
+	cursor:pointer;
 }
 
 .link:hover {

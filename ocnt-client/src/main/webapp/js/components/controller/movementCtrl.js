@@ -15,9 +15,12 @@
 
 			 var start = pagination.start || 0;   
 			 var number = pagination.number || 10; 
+			 scope.totalNoOfRec = 0;
 			 service.retrievePageRecords(start, number, tableState,null).then(function (result) {
 				 tableState.pagination.numberOfPages = result.totalNoOfPage;
-				 scope.totalNoOfRec = result.totalNoOfRec;
+				 tableState.pagination.numberOfRecords = result.totalNoOfRec;
+				 ctrl.dest_filter = result.dest_filter;
+				 ctrl.opt_filter = result.opt_filter;
 				 ctrl.displayed = result.data;
 				 ctrl.isLoading = false;
 			 });

@@ -15,6 +15,8 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', functi
 				this.isRefresh = false;
 				results.totalNoOfPage = items.totalNoOfPage;
 				results.totalNoOfRec = items.totalNoOfRec;
+				results.dest_filter = items.dest_filter_dropdown;
+				results.opt_filter = items.opt_filter_dropdown;
 				getPage(start, number, params);
 				deferred.resolve(results);
 			});

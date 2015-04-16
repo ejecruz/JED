@@ -404,6 +404,7 @@ ng.module('smart-table')
 
           scope.pages = [];
           scope.numPages = paginationState.numberOfPages;
+          scope.totalRecords = paginationState.numberOfRecords;
 
           for (i = start; i < end; i++) {
             scope.pages.push(i);
