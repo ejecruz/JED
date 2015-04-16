@@ -3,10 +3,21 @@
 
 	ocnt.app.controller('movementCtrl', [ '$scope', '$http','hotkeys','$state','MovementService',
 			function(scope, $http,hotkeys,$state,service) {
-		 var ctrl = this;
-
+		 
+		var ctrl = this;
 		 this.displayed = [];
-
+		 scope.mode = "Edit";
+		 
+		 scope.switchMode = function switchMode(){
+			 if(scope.mode == "Edit"){
+				 scope.mode = "View";
+				 scope.hideCol = true;
+			 }else{
+				 scope.mode = "Edit";
+				 scope.hideCol = false;
+			 }
+		 }
+		 
 		 this.callServer = function callServer(tableState) {
 
 			 ctrl.isLoading = true;
