@@ -9,8 +9,8 @@
 		 scope.mode = "Edit";
 		 var loadMovementTimer;
 		 var tableStateTemp;
-		 
-		 this.callServer = function callServer(tableState,refresh) {
+		 var refresh;
+		 this.callServer = function callServer(tableState) {
 			 tableStateTemp = tableState;
 			 ctrl.isLoading = true;
 			 
@@ -38,11 +38,13 @@
 					 return;
 				 }
 				 loadMovementTimer = $interval(function(){
-					 ctrl.callServer(tableStateTemp,true);
+					 refresh = true;
+					 ctrl.callServer(tableStateTemp);
 				 },5000);
 			 }else{
 				 scope.mode = "Edit";
 				 scope.hideCol = false;
+				 refresh = false;
 				 if(angular.isDefined(loadMovementTimer)){
 					 $interval.cancel(loadMovementTimer);
 					 loadMovementTimer = undefined;
