@@ -49,5 +49,9 @@
 				 }
 			 }
 		 }
+		
+		scope.processOpt = function processOpt(row){
+			$state.go('assignMovement');
+		}
 	}]);
 })(window.ocnt = window.ocnt || {}); 
