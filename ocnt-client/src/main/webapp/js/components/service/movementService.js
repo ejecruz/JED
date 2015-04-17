@@ -7,7 +7,7 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', functi
 	var results = {};
 	
 	function retrieveMovementDetails(start, number, params,refresh,deferred){
-		if((refresh == null && this.isRefresh == null) || refresh || this.isRefresh){
+		if(((refresh == null || !angular.isDefined(refresh)) && this.isRefresh == null) || refresh || this.isRefresh){
 			$http.post('http://localhost:8080/ocnt-ws/rest/movement/generateJson').
 			then(function(response){
 				items = response.data;
