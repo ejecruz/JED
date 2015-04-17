@@ -55,6 +55,30 @@
 													$scope.tabs[0].active = true;
 												}
 											});
+									hotkeys
+									.add({
+										combo : 'p',
+										description : 'PrintLabels',
+										callback : function() {
+											$scope.tabs[1].active = true;
+										}
+									});
+									hotkeys
+									.add({
+										combo : 'q',
+										description : 'Query',
+										callback : function() {
+											$scope.tabs[3].active = true;
+										}
+									});
+									hotkeys
+									.add({
+										combo : 'm',
+										description : 'Maintenance',
+										callback : function() {
+											$scope.tabs[4].active = true;
+										}
+									});
 									hotkeys.add({
 										combo : '1',
 										description : 'Movement Plus',
