@@ -1,0 +1,659 @@
+body {
+    background-image: url("../img/bg.png");
+    background-repeat: repeat-x;
+    background-color: #ffffff;
+    padding-bottom: 30px;
+    padding-top: 50px;
+    overflow-x:hidden;
+}
+
+h1 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 20px;
+    color: #666666;
+}
+
+h2 {
+    font-size: 17px;
+    padding: 5px;
+}
+
+h3 {
+    font-size: 15px;
+}
+
+h4 {
+    font-size: 12px;
+    color: #666666;
+}
+
+dd {
+    font-size: 11px;
+}
+
+a, a:hover,
+.link, .link:hover {
+    color: #cc0000;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+legend {
+    color: #cc0000;
+    font-size: 16px;
+}
+
+.navbar-fixed-top-fixheight {
+    height: 20px;
+}
+
+.content {
+    background-color: #fefefe;
+    min-height: 600px;
+}
+
+.header{
+	background-color: #fff;
+}
+
+.footer {
+    padding: 5px 10px 0;
+    color: #666666;
+    background-color: #fff;
+    border-top: 1px solid #cccccc;
+}
+
+.footer a {
+    color: #999999;
+}
+
+#screenID {
+    font-weight: bold;
+    color: #000;
+}
+
+.main-content-pane {
+    margin-top: -1px;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.side-pane {
+    background-color: #f7f7f7;
+    padding: 15px;
+    border: 1px solid #e7e7e7;
+    margin-bottom: 20px;
+}
+
+/* Last side-pane which will have a border at the bottom to make it clean */
+.side-pane.end {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.side-pane.clear {
+    padding-top: 15px;
+    background-color: transparent;
+}
+
+.side-pane.clear.borderless {
+    border: 0px;
+}
+
+.side-pane-divider {
+    /*border-left: 1px solid #cccccc;*/
+
+}
+
+.action-pane {
+    background-color: #eeeeee;
+    padding: 10px 20px 5px;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #dddddd;
+}
+
+.action-pane .col-md-3 {
+    padding: 3px 15px;
+}
+
+.action-pane .icon-home {
+    font-size: 24px;
+    color: #ffcc04;
+}
+
+.in-form-action-pane {
+    background-color: #f7f7f7;
+    border-right: 1px solid #e7e7e7;
+    border-left: 1px solid #e7e7e7;
+    border-top: 1px solid #e7e7e7;
+    padding: 5px;
+    text-align: right;
+}
+
+.action-pane label {
+    color: #e7e7e7;
+}
+
+.subaction-pane {
+    border: 1px #e7e7e7 solid;
+    background-color: #f7f7f7;
+    padding: 10px;
+    text-align: right;
+}
+
+.tab-pane {
+    padding-top: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.sub-action-pane {
+    padding: 10px;
+}
+
+a.grid-action-link {
+    color: #aa0000;
+    font-size: 12px;
+}
+
+a.grid-action-link:hover {
+    color: #cc0000;
+}
+
+.page-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 20px
+}
+
+.content-form {
+    padding-top: 10px;
+    padding-left: 0px;
+}
+
+span.required {
+    color: #cc0000;
+}
+
+p.required {
+    font-size: 11px;
+    color: #cc0000;
+}
+
+div.grid-cell-background {
+    display: block;
+    background-image: none;
+    margin-right: -2px;
+    margin-left: -2px;
+    height: 14px;
+    padding: 4px;
+}
+
+/* Checkpoint Entry elements */
+select.manual-entry-content-field {
+    width: 160px;
+}
+
+input.manual-entry-content-field {
+    width: 160px;
+    text-transform: uppercase;
+}
+
+div.entry-menu-content-pane {
+    height: 250px;
+    text-align: center;
+}
+
+div.manual-entry-content {
+    text-align: left;
+    padding-top: 0px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+td.entry-field {
+    padding-right: 10px;
+}
+
+div.pending-checkpoint-data {
+    background: #CC0000;
+    color: #ffffff;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+div.queued-checkpoint-data {
+    background: silver;
+    color: #ffffff;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+hr.cm-group-div {
+    color: #000000;
+}
+
+hr.form-div {
+    color: #e7e7e7;
+    padding: 0px;
+    margin-top: 0px;
+}
+
+/* Validation error */
+.error {
+    color: #cc0000;
+    padding-left: 10px;
+}
+
+.errorfield {
+    color: #cc0000;
+    border: 1px #cc0000 solid;
+}
+
+/* OVERRIDES */
+
+/* Override modal-header of bootstrap */
+.modal-header {
+    background-color: #555555;
+    color: #e7e7e7;
+}
+
+/* Override input css of bootstrap */
+select, textarea, input[type='text'], input[type='password'], input[type='datetime'], input[type='datetime-local'], input[type='date'], input[type='month'], input[type='time'], input[type='week'], input[type='number'], input[type='email'], input[type='url'], input[type='search'] {
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    text-transform: uppercase;
+}
+
+/* Case Sensitive fields */
+input.caseSensitive {
+    text-transform: none;
+}
+
+select.caseSensitive, textarea.caseSensitive {
+    text-transform: none;
+}
+
+/*Override validationMessage of valid8 */
+.validationMessage {
+    padding-left: 10px;
+    color: #cc0000;
+    font-size: 11px;
+}
+
+/*JQueryUI sortable portlet */
+.column {
+    width: 550px;
+    float: left;
+    padding-bottom: 100px;
+    padding-top: 10px
+}
+
+.column1 {
+    width: 250px;
+    float: left;
+    padding-bottom: 100px;
+    padding-top: 10px
+}
+
+.portlet {
+    margin: 0 1em 1em 0;
+}
+
+.portlet-header {
+    margin: 0.3em;
+    padding-bottom: 4px;
+    padding-left: 0.2em;
+    padding-top: 4px
+}
+
+.portlet-header .ui-icon {
+    float: right;
+}
+
+.portlet-content {
+    padding: 0.4em;
+}
+
+.ui-sortable-placeholder {
+    border: 1px dotted black;
+    visibility: visible !important;
+    height: 50px !important;
+}
+
+.ui-sortable-placeholder * {
+    visibility: hidden;
+}
+
+/* For GCGS Activation */
+td.mapping-status {
+    width: 200px;
+}
+
+td.mapping-status.active {
+    color: #228811;
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+
+td.mapping-status.pending {
+    color: #999999;
+}
+
+.navbar .brand {
+    color: #cc0000;
+    font-size: 20px;
+    text-shadow: 0px 1px 0px #aa0000;
+}
+
+.navbar .nav>li>a {
+    color: #333;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 0px 1px 0px #ffcc00;
+}
+
+.navbar .nav li.dropdown .dropdown-toggle .caret, .navbar .nav li.dropdown.open .caret {
+    border-top-color: #000;
+    border-bottom-color: #000;
+}
+
+.nav li.dropdown.open .caret, .nav li.dropdown.open.active .caret, .nav li.dropdown.open a:hover .caret {
+    border-top-color: #000;
+    border-bottom-color: #000;
+}
+
+.dropdown-menu li>a:hover, .dropdown-menu li>a:focus, .dropdown-submenu:hover>a {
+    color: #111;
+    text-decoration: none;
+    text-shadow: 0px 1px 1px #e7e7e7;
+    background-color: #0081c2;
+    background-image: -moz-linear-gradient(top, #ffd11a, #ffcc00);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffd11a), to(#ffcc00));
+    background-image: -webkit-linear-gradient(top, #ffd11a, #ffcc00);
+    background-image: -o-linear-gradient(top, #ffd11a, #ffcc00);
+    background-image: linear-gradient(to bottom, #ffd11a, #ffcc00);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd11a', endColorstr='#ffcc00', GradientType=0);
+}
+
+#currentLocation {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    padding-top: 4px;
+}
+
+.about-body {
+    background-image: url("../img/dhl_bg_about.png");
+    background-position: 0px 0px;
+}
+
+.about-text {
+    bottom: 5%;
+    position: absolute;
+}
+
+.about-text h3 {
+    font-weight: bold;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+.buttons-pane {
+    text-align: right;
+}
+
+.hoursSelector {
+    width: auto;
+}
+
+.minutesSelector {
+    width: auto;
+}
+
+#loginBtn {
+    margin-right: 0;
+}
+
+/* Menu*/
+.navbar-header {
+    padding-top: 10px;
+}
+
+.header-menu {
+    text-align: left;
+}
+
+.header-menu li > a {
+    padding: 2px;
+}
+
+.greeting {
+    text-align: right;
+    padding-right: 200px;
+    font-size: 12px;
+}
+
+.greeting .name {
+    font-weight: bold;
+}
+
+.mainNavBar .location {
+    text-transform: capitalize;
+}
+
+@media (min-width: 992px) {
+    .header-menu {
+        text-align: left;
+        padding: 3px 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .mainNavBar .greeting {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .mainNavBar .header-menu {
+        text-align: right;
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mainNavBar .page-title {
+        display: none;
+    }
+}
+
+.fileinput-button input {
+    transform: translate(0px, 0px) scale(1) !important;
+}
+
+.fileinput-button {
+    float: none !important;
+}
+
+/** jQgrid style override*/
+.table .ui-state-highlight {
+    background: #d5d5d5 url(images/ui-bg_flat_0_eeeeee_40x100.png) 50% 50% repeat-x !important;
+}
+
+.table .ui-widget-content:hover {
+    border: none;
+}
+
+.ui-jqgrid {
+    border: none;
+    padding-bottom: 20px;
+}
+
+.ui-jqgrid tr.ui-row-ltr td {
+    padding: 8px;
+}
+
+.ui-th-column, .ui-jqgrid .ui-jqgrid-htable th.ui-th-column {
+    background-color: #FFF;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 5px;
+    text-align: left;
+}
+
+.ui-jqgrid .ui-jqgrid-hbox {
+    background-color: #FFF;
+    border-bottom: 2px solid #ccc;
+}
+
+.ui-jqgrid .ui-state-default {
+    border: none;
+}
+
+.ui-jqgrid tr.ui-row-ltr td, .ui-jqgrid .jqgrow {
+    border: none;
+    border-bottom: 1px solid #CCC;
+    font-size: 12px;
+}
+
+.ui-jqgrid tr.jqgfirstrow td {
+    border-right: none;
+}
+
+.ui-jqgrid .ui-jqgrid-htable th {
+    background: none;
+    height: 44px;
+}
+
+.ui-jqgrid .ui-pager-control {
+    background-color: #FFF;
+    padding: 5px;
+}
+
+.ui-jqgrid .ui-jqgrid-pager {
+    height: 30px;
+}
+
+.ui-jqgrid tr.jqgfirstrow td {
+    border-top: none;
+}
+
+.ui-jqgrid .ui-widget-content a {
+    color: #cc0000;
+}
+
+.ui-jqgrid .ui-pg-input, .ui-jqgrid .ui-pg-selbox {
+    font-size: 1.2em;
+    height: 20px;
+}
+
+.ui-jqgrid tr.jqgrow td {
+    white-space: normal;
+    word-break: break-all;
+}
+
+.ui-jqgrid .ui-widget-content a.badge {
+    color: #FFF;
+}
+
+.ui-jqgrid .ui-widget-content .badge.failed {
+    background-color: #cc0000;
+}
+
+.ui-jqgrid .ui-pg-button, .ui-jqgrid .ui-pg-button.ui-state-hover, .ui-jqgrid .ui-pg-button:hover {
+    border: 0 solid;
+    padding: 1px;
+    margin : 0;
+    background: none #FFF;
+}
+
+.filteredText {
+    height: 25px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+/** end jQgrid style override*/
+
+button.btn-modal {
+    text-align: center;
+    background-color: #ffffff;
+}
+
+/**Fixing overlay issue in IE */
+.ui-widget-overlay {
+    position: fixed !important;
+}
+
+.msg {
+    position: relative;
+    margin: 0 auto;
+    clear: left;
+    height: auto;
+    z-index: 0;
+    text-align: center;
+}
+
+.alertContainer {
+    padding-top: 5px;
+    text-align: center;
+}
+
+.alert-msg-error {
+    font-size: small;
+    color: #c03f39;
+}
+
+.alert-msg-success {
+    font-size: small;
+    color: #51a351;
+}
+
+.alert-msg-warning {
+    font-size: small;
+    color: #f89406;
+}
+
+.alert-msg-info {
+    font-size: small;
+    color: #2f96b4;
+}
+
+.word-wrap {
+    white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    white-space: pre-wrap; /* css-3 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+    word-break: break-all;
+    white-space: normal;
+}
+
+.checkpoint-entry-list-actions {
+    white-space: nowrap;
+}
+
+.checkpoint-entry-list-actions a {
+    color: #000;
+}
+
+.checkpoint-entry-list-actions a:hover {
+    text-decoration: none;
+}
+
+.checkpoint-entry-form input.ng-invalid.ng-dirty {
+    border-color: #c03f39;
+}
+
+.ui-jqdialog input {
+    text-transform: none;
+}

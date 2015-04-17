@@ -1,0 +1,64 @@
+.history_batchmode_col1 { width: 280px; }
+.history_selectivemode_col1 { width: 100px; }
+.history_selectivemode_col2 { width: 280px; }
+.printList_col1 { width: 30px; }
+.printList_col2 { width: 294px; }
+.printList_col3 { width: 76px; }
+.printList_col4 { width: 34px; }
+.history_closehu_col1 { width: 200px; }
+.history_closehu_col2 { width: 200px; }
+.history_closehu_col3 { width: 200px; }
+.history_closehu_col4 { width: 200px; }
+.history_mergeHu_col1{ width: 200px;}
+.history_mergeHu_col2{ width: 200px;}
+.history_unAssignMovement_col1{ width: 200px;}
+.history_unAssignMovement_col2{ width: 200px;}
+.history_unAssignMovement_col3{ width: 200px;}
+.history_unAssignMovement_col4{ width: 200px;}
+.history_emptyhu_col1 { width: 200px; }
+.history_emptyhu_col2 { width: 200px; }
+.history_emptyhu_col3 { width: 200px; }
+.history_emptyhu_col4 { width: 200px; }
+.history_assignMovement_col1 { width: 200px; }
+.history_assignMovement_col2 { width: 200px; }
+
+.result_table { border-collapse: collapse; }
+.result_head
+{
+    padding: 4px 6px 4px 6px;
+    height: 11px;
+    border: solid 1px #BCBCBC;
+    background-color: #FFD900;
+    color: #565656;
+}
+.result_row { }
+.result_row_highlight
+{
+    background-color: #BFE1FF;
+    padding: 4px 6px 4px 6px;
+    color: #666666;
+    border: solid 1px #BCBCBC;
+    border-top: solid 2px #0088FF;  
+    border-bottom: solid 2px #0088FF;  
+}
+.result_row_highlight_left{ border-left: solid 2px #0088FF; }
+.result_row_highlight_right{ border-right: solid 2px #0088FF; }
+.result_col { padding: 4px 6px 4px 6px; color: #666666; border: solid 1px #BCBCBC; }
+.result_colred { font-weight: bold; background-color: #FF9995; }
+.result_colyellow { font-weight: bold; background-color: #FFFF50; }
+.result_colgreen { font-weight: bold; background-color: #78F878; }
+.result_colblue { font-weight: bold; background-color: #B4CFEC; }
+.result_colpurple { font-weight: bold; background-color: #FFA0FF; }
+.result_colfirstitem { font-weight: bold; font-size: 11pt; font-family: Helvetica }
+
+.pagercontainer { padding-top: 8px }
+.pager { color: #2686EE; padding-right: 10px; }
+.pager_selected { color: #000000;padding-right: 10px; }
+
+ 
+
+ 
+
+
+
+

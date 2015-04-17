@@ -1,0 +1,51 @@
+.ui-dialog-titlebar-close {
+  visibility: hidden;
+}
+
+.ui-widget-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #aaaaaa url(images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x;
+	opacity: .3;
+	filter: Alpha(Opacity=30);
+}
+
+#basic-modal-content
+{
+    display: none;
+}
+#simplemodal-overlay
+{
+    background-color: #000;
+    position: fixed;
+    height: 100%;
+}
+
+/* Container */
+.modalDialog
+{    
+    display: none;
+    background-color: #FFFFFF;
+    border: 2px solid #888888;
+    padding: 15px 36px 15px 36px;
+}
+
+.modalDialog .simplemodal-data
+{
+    padding: 0;
+}
+
+.modalDialog .msgLabel
+{
+    color: #000000;
+    font-size: 10pt;
+}
+
+.msgButtons
+{
+    text-align: right;
+    padding-top: 10px;
+}

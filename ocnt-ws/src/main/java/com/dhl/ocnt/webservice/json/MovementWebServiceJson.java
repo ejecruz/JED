@@ -10,6 +10,7 @@ import javax.ws.rs.core.Response;
 
 import org.apache.log4j.Logger;
 
+import com.dhl.ocnt.model.AssignMovementWrapper;
 import com.dhl.ocnt.model.Movement;
 import com.dhl.ocnt.model.MovementWrapped;
 import com.dhl.webservice.dummy.CreateDummyData;
@@ -19,6 +20,22 @@ public class MovementWebServiceJson {
 
 	private final static Logger logger = Logger
 			.getLogger(MovementWebServiceJson.class);
+	
+	@POST
+	@Path("generateAssignMovementJson")
+	@Produces(MediaType.APPLICATION_JSON)
+	public AssignMovementWrapper getAssignMovementDataAsJson(){
+		
+		System.out.println("getAssignMovementDataAsJson()");
+		
+		AssignMovementWrapper assignMovementList = new AssignMovementWrapper();
+		
+		assignMovementList = CreateDummyData.createAmcDummyData();
+		
+		//http://localhost:8080/ocnt-ws/rest/movement/generateAssignMovementJson
+		
+		return assignMovementList;
+	}
 	
 	@POST
 	@Path("generateJson")

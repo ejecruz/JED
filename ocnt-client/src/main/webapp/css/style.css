@@ -1,0 +1,97 @@
+.shadow {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=180, Color='#4F4F4F')";/* For IE 8 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=180, Color='#4F4F4F');/* For IE 5.5 - 7 */
+}
+
+html, body 
+{
+    behavior: url("js/csshover3.htc");
+    font-size: 10pt;
+    color: #404040;
+    font-family: Helvetica;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    background-color: #FAFAFA;
+    overflow: auto;
+}
+table { border-collapse: collapse }
+td { }
+body a{ text-decoration: none; }
+input { font-family: Helvetica; }
+.noborder { border-style: none }
+
+.supercontent
+{
+    width: 900px;
+    overflow: hidden;
+    display: block;
+    margin: 1% auto 0 auto;
+}
+.content
+{       
+    height: 405px;
+    float: right;
+    font-size: 9pt;
+    font-weight: bold;
+    background-color: #FFFFFF;
+    border: solid 2px #CDC9C9;
+    padding: 15px 30px 15px 30px;
+    width: 836px; 
+       
+}
+.contenttable { border-collapse: collapse; width: 830px; margin: 0 }
+.containerwithemptyspaces { vertical-align: top }
+.tablebuttoncontainer { text-align: right; }
+.buttoncontainer { padding-top: 470px; text-align: right; }
+.button { background-color: #FFCC00; font-weight: bold; width: 105px; height: 20px; }
+.secondarybutton { background-color: #FFFFFF; }
+.shorterbutton { width: 70px; }
+.longerbutton { width: 155px; }
+
+input, textarea, div select { border: double 1px #A8A8A8; }
+.contentInput{ text-transform:uppercase; }
+.saloc_input { width: 40px; }
+.sa_desc { background-color: #E6E4E4; }
+.quantityText { width: 30px; text-align: right }
+.smalltext { width: 35px; }
+.timetxt { width: 40px; }
+.datetext { width: 100px; }
+.requiredField { border: solid 2px #0088FF; }
+
+.commonErrorMessage{ color: #0089FF; font-weight: bold }
+
+.title { height: 15px; padding-top: 10px; color: #d70241; font-weight: bold; border-bottom: solid 2px #d70241; vertical-align: bottom; text-align:left}
+.title_below { padding-top: 10px }
+.col_title {   font-size: 10pt; color: #4F4F4F; text-align: right; padding-right: 6px; vertical-align: middle;}
+.col_mid {   font-size: 10pt; color: #4F4F4F; vertical-align: top;}
+.col_passive { font-size: 10pt; color: #8B8989;  text-align: left; padding-right: 8px; vertical-align: middle; font-weight: bold; }
+.col_moreattention { font-size: 10pt; color: #CC0000; font-weight: bold; font-family: Helvetica }
+
+.naviselect { width: 100%; float: right; font-size: 10pt; font-weight: bold; }
+.navitable { width: 100%; }
+
+.shortcutdesc { font-size: 8pt; color: #A6A6A6; }
+
+
+
+
+.upperbar
+{
+    padding-left: 8px;
+    font-size: 8pt;   
+    text-decoration: underline; 
+    color: blue;    
+}
+
+.primefacesTextArea { -webkit-box-shadow: none; box-shadow:none;}
+.ui-selectonemenu label.ui-selectonemenu-label{ cursor:pointer; box-shadow:none;}
+
+.fixed-size { table-layout: fixed;word-wrap: break-word;}
+
+#messagepopup input[type=submit]:focus {
+   outline: #000000 dotted 1px;
+}
+
+input[readonly], input[readonly="readonly"] {
+	color: #808080;
+}

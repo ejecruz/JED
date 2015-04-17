@@ -18,5 +18,10 @@ ocnt.app.config(['$urlRouterProvider','$stateProvider',
 	                		templateUrl: '/ocnt-client/view/modules/movement/movement_hu_plus.html',
 	                		controller: 'movementCtrl'
 	                	});
+	                	$stateProvider.state('assignMovement',{
+	                		url:'/assignMovement',
+	                		templateUrl: '/ocnt-client/view/modules/movement/assign_movement.html',
+	                		controller: 'assignMovementCtrl'
+	                	});
 					}]);
 }) (window.ocnt = window.ocnt || {});

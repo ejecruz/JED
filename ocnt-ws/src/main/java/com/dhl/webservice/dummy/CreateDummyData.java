@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.dhl.ocnt.model.AssignMovement;
+import com.dhl.ocnt.model.AssignMovementWrapper;
+import com.dhl.ocnt.model.HandlingUnit;
 import com.dhl.ocnt.model.Movement;
 import com.dhl.ocnt.model.MovementWrapped;
 
@@ -289,7 +292,6 @@ public class CreateDummyData {
 		
 		List<String> dest_fil = new ArrayList<String>();
 		
-		dest_fil.add("<ALL>");
 		dest_fil.add("SINHUB");
 		dest_fil.add("KULGTW");
 		dest_fil.add("ICNGTW");
@@ -324,6 +326,263 @@ public class CreateDummyData {
 	    int randomNum = rand.nextInt((max - min) + 1) + min;
 
 	    return randomNum;
+	}
+	
+	public static AssignMovementWrapper createAmcDummyData(){
+		
+		AssignMovementWrapper amv_wrapped = new AssignMovementWrapper();
+		AssignMovement amv = new AssignMovement();
+		List<AssignMovement> amvList = new ArrayList<AssignMovement>();
+		List<HandlingUnit> hu_allocParent_List = new ArrayList<HandlingUnit>();
+		List<HandlingUnit> hu_notAssignedParent_List = new ArrayList<HandlingUnit>();
+		
+		int no_records_allocatedParent = randInt(0, 1);
+		int no_pages_allocatedParent = no_records_allocatedParent/5;
+		
+		amv_wrapped.setAllocatedParent_noOfRec(no_records_allocatedParent);
+		amv_wrapped.setAllocatedParent_noOfPage(no_pages_allocatedParent);
+		
+		int no_records_notAssignedParent = randInt(2, 25);
+		int no_pages_notAssignedParent = no_records_notAssignedParent/5;
+		
+		amv_wrapped.setNotAssignedParent_noOfPage(no_pages_notAssignedParent);
+		amv_wrapped.setNotAssignedParent_noOfRec(no_records_notAssignedParent);
+		
+		amv.setOperation("");
+		amv.setMovementNo("SN004/"+(randInt(5,70)));
+		amv.setTransptReg("");
+		amv.setTransptType("C");
+		amv.setSTD("23:00");
+		amv.setDestination("SINHUB");
+		amv.setMawb("119-"+(987658321+randInt(1,10))+"");
+		amv.setMfst("");
+		amv.setCutOffTime("22:50/13");
+		amv.setStatus("OP");
+		amvList.add(amv);
+		amv_wrapped.setAmc_data(amvList);
+		
+		//create ramdom data allocated Parent
+		for(int i = 0; i<no_records_allocatedParent; i++){
+			
+			HandlingUnit hu = new HandlingUnit();
+			
+			if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(100,200));
+				hu.setHandlingUnitType("U");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("TEST VRN ALL ULD");
+				hu.setStatus("OPEN");
+
+			}
+			else if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(201,300));
+				hu.setHandlingUnitType("U");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("TEST VRN ALL ULD");
+				hu.setStatus("CLOSED");
+				
+			}
+			else if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(201,300));
+				hu.setHandlingUnitType("B");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("TEST VRN ALL");
+				hu.setStatus("OPEN");
+				
+			}
+			else if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(301,400));
+				hu.setHandlingUnitType("U");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("HKG ULD");
+				hu.setStatus("CLOSED");
+				
+			}
+			else if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(401,500));
+				hu.setHandlingUnitType("L");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("HKG ULD");
+				hu.setStatus("OPEN");
+				
+			}
+			else if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(501,600));
+				hu.setHandlingUnitType("B");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("HKG ULD");
+				hu.setStatus("CLOSED");
+				
+			}
+			else if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(601,700));
+				hu.setHandlingUnitType("U");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("HKG ULD");
+				hu.setStatus("OPEN");
+			
+			}
+			else if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(701,800));
+				hu.setHandlingUnitType("B");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("HKG BAG");
+				hu.setStatus("CLOSED");
+			
+			}
+			else{
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(801,900));
+				hu.setHandlingUnitType("U");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("HKG BAG");
+				hu.setStatus("OPEN");
+			
+			}
+			
+			hu_allocParent_List.add(hu);
+		}
+		
+		amv_wrapped.setHu_data_allocated(hu_allocParent_List);
+		
+		//create ramdom data not assigned Parent
+		//more than the allocated
+		for(int i = 0; i<no_records_notAssignedParent; i++){
+			
+			HandlingUnit hu = new HandlingUnit();
+			
+			if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(100,200));
+				hu.setHandlingUnitType("U");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("TEST VRN ALL ULD");
+				hu.setStatus("OPEN");
+
+			}
+			else if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(201,300));
+				hu.setHandlingUnitType("U");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("TEST VRN ALL ULD");
+				hu.setStatus("CLOSED");
+				
+			}
+			else if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(201,300));
+				hu.setHandlingUnitType("B");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("TEST VRN ALL");
+				hu.setStatus("OPEN");
+				
+			}
+			else if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(301,400));
+				hu.setHandlingUnitType("U");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("HKG ULD");
+				hu.setStatus("CLOSED");
+				
+			}
+			else if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(401,500));
+				hu.setHandlingUnitType("L");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("HKG ULD");
+				hu.setStatus("OPEN");
+				
+			}
+			else if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(501,600));
+				hu.setHandlingUnitType("B");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("HKG ULD");
+				hu.setStatus("CLOSED");
+				
+			}
+			else if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(601,700));
+				hu.setHandlingUnitType("U");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("HKG ULD");
+				hu.setStatus("OPEN");
+			
+			}
+			else if((i%(randInt(1, 9))) == 0){
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(701,800));
+				hu.setHandlingUnitType("B");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("HKG BAG");
+				hu.setStatus("CLOSED");
+			
+			}
+			else{
+				
+				hu.setOperation("");
+				hu.setHandlingUnit("H450566"+randInt(801,900));
+				hu.setHandlingUnitType("U");
+				hu.setRegNo("");
+				hu.setEPO("HKGHUB");
+				hu.setFlagging("HKG BAG");
+				hu.setStatus("OPEN");
+			
+			}
+			
+			hu_notAssignedParent_List.add(hu);
+		}
+		
+		amv_wrapped.setHu_data_notAssigned(hu_notAssignedParent_List);
+		
+		return amv_wrapped;
 	}
 
 }
