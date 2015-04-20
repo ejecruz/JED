@@ -66,14 +66,19 @@ nav>.ng-scope ul {
 			<span style="color: #d70241; font-weight: bold;">Movement
 				Information</span>
 		</div>
-		<div class="mvmntMenu" style="margin-bottom: 10px;">
+		<div class="mvmntMenu" style="margin-bottom: 10px;" stTable>
 			<div class="contenttable" style="width: 100%;">
 				<div style="display: inline;">
-					Day Range: <img src="../img/minus-16.png"> <input type="text"
-						value="0" style="width: 30px; text-align: center;"> <input
-						type="text" value="0" style="width: 30px; text-align: center;">
-					<img src="../img/plus-16.png"> <input type="submit"
-						value="Search" class="button">
+					Day Range: 
+					<img src="../img/minus-16.png"> 
+					<input type="text"
+						value="0" style="width: 30px; text-align: center;" ng-model="minusDate"> 
+					<input
+						type="text" value="0" style="width: 30px; text-align: center;" ng-model="plusDate">
+					<img src="../img/plus-16.png"> 
+					<button ng-click="searchDayRange(minusDate,plusDate)"
+						class="button"
+						style="display: inline;">Search</button>
 				</div>
 				<div style="display: inline; float: right;">
 					<p style="display: inline;">You are currently in {{mode}} Mode</p>

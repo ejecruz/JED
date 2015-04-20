@@ -5,10 +5,11 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', functi
 	var items = [];
 	this.isRefresh = null;
 	var results = {};
+	var movementUrl = 'http://localhost:8080/ocnt-ws/rest/movement/generateJson';
 	
-	function retrieveMovementDetails(start, number, params,refresh,deferred){
+	function retrieveMovementDetails(start, number, params,refresh,deferred, url){
 		if((refresh == null && this.isRefresh == null) || refresh || this.isRefresh){
-			$http.post('http://localhost:8080/ocnt-ws/rest/movement/generateJson').
+			$http.post(url).
 			then(function(response){
 				items = response.data;
 				console.log(items);
@@ -37,14 +38,22 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', functi
 
 	function retrievePageRecords(start, number, params,refresh){
 		var deferred = $q.defer();
-		retrieveMovementDetails(start, number, params,refresh,deferred);
+		retrieveMovementDetails(start, number, params,refresh,deferred,movementUrl);
+		return deferred.promise;
+	}
+	
+	function searchDayRange(start, number, params, refresh, minusDate,plusDate){
+		var deferred = $q.defer();
+		var appendedValues = "/"+plusDate+"/"+minusDate;
+		retrieveMovementDetails(start, number, params,refresh,deferred,movementUrl+appendedValues);
 		return deferred.promise;
 	}
 	
 	return {
 		retrieveMovementDetails:retrieveMovementDetails,
 		getPage: getPage,
-		retrievePageRecords:retrievePageRecords
+		retrievePageRecords:retrievePageRecords,
+		searchDayRange: searchDayRange
 	};
 
 }]);

@@ -55,5 +55,24 @@
 		scope.processOpt = function processOpt(row){
 			$state.go('assignMovement');
 		}
+		
+		scope.searchDayRange = function searchDayRange(minusDate,plusDate){
+			 ctrl.isLoading = true;
+			 
+			 var pagination = tableStateTemp.pagination;
+
+			 var start = pagination.start || 0;   
+			 var number = pagination.number || 10; 
+			 scope.totalNoOfRec = 0;
+			 service.searchDayRange(start, number, tableStateTemp, true, minusDate,plusDate).then(function (result) {
+				 tableStateTemp.pagination.numberOfPages = result.totalNoOfPage;
+				 tableStateTemp.pagination.numberOfRecords = result.totalNoOfRec;
+				 ctrl.dest_filter = result.dest_filter;
+				 ctrl.opt_filter = result.opt_filter;
+				 ctrl.displayed = result.data;
+				 ctrl.isLoading = false;
+			 });
+			
+		}
 	}]);
 })(window.ocnt = window.ocnt || {}); 
