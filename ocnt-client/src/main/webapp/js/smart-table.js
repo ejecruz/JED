@@ -255,6 +255,18 @@ ng.module('smart-table')
         }, true);
 
         // view -> table state
+        if (element.prop('tagName') == 'SELECT') {
+            element.bind('change', function (evt) {
+                evt = evt.originalEvent || evt;
+                if (promise !== null) {
+                    $timeout.cancel(promise);
+                }
+                promise = $timeout(function () {
+                    tableCtrl.search(evt.target.value, scope.predicate || '');
+                    promise = null;
+                }, throttle);
+            });
+        }else{
         element.bind('input', function (evt) {
           evt = evt.originalEvent || evt;
           if (promise !== null) {
@@ -266,6 +278,7 @@ ng.module('smart-table')
             promise = null;
           }, throttle);
         });
+        }
       }
     };
   }]);
