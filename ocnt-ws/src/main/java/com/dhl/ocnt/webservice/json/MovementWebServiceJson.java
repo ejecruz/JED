@@ -1,5 +1,7 @@
 package com.dhl.ocnt.webservice.json;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -11,6 +13,7 @@ import javax.ws.rs.core.Response;
 import org.apache.log4j.Logger;
 
 import com.dhl.ocnt.model.AssignMovementWrapper;
+import com.dhl.ocnt.model.HandlingUnit;
 import com.dhl.ocnt.model.Movement;
 import com.dhl.ocnt.model.MovementWrapped;
 import com.dhl.webservice.dummy.CreateDummyData;
@@ -22,19 +25,35 @@ public class MovementWebServiceJson {
 			.getLogger(MovementWebServiceJson.class);
 	
 	@POST
-	@Path("generateAssignMovementJson")
+	@Path("getAssignMovementAllocatedDataAsJson")
 	@Produces(MediaType.APPLICATION_JSON)
-	public AssignMovementWrapper getAssignMovementDataAsJson(){
+	public List<HandlingUnit> getAssignMovementAllocatedDataAsJson(){
 		
-		System.out.println("getAssignMovementDataAsJson()");
+		System.out.println("getAssignMovementAllocatedDataAsJson()");
 		
 		AssignMovementWrapper assignMovementList = new AssignMovementWrapper();
 		
 		assignMovementList = CreateDummyData.createAmcDummyData();
 		
-		//http://localhost:8080/ocnt-ws/rest/movement/generateAssignMovementJson
+		//http://localhost:8080/ocnt-ws/rest/movement/getAssignMovementAllocatedDataAsJson
 		
-		return assignMovementList;
+		return assignMovementList.getHu_data_allocated();
+	}
+	
+	@POST
+	@Path("getAssignMovementNonAssignedDataAsJson")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<HandlingUnit> getAssignMovementNonAssignedDataAsJson(){
+		
+		System.out.println("getAssignMovementNonAssignedDataAsJson()");
+		
+		AssignMovementWrapper assignMovementList = new AssignMovementWrapper();
+		
+		assignMovementList = CreateDummyData.createAmcDummyData();
+		
+		//http://localhost:8080/ocnt-ws/rest/movement/getAssignMovementNonAssignedDataAsJson
+		
+		return assignMovementList.getHu_data_notAssigned();
 	}
 	
 	@POST

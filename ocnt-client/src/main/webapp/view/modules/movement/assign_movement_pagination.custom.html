@@ -1,0 +1,10 @@
+<nav ng-if="pages.length >= 1">
+	<div class="page_panel_center" style="display:inline;">
+		<a ng-click="selectPage(1)"><img src="/ocnt-client/img/firstDisabled.gif"/></a>
+		<a ng-click="selectPage(currentPage - 1)"><img src="/ocnt-client/img/prevDisabled.gif"/></a>
+		<a>Page <page-select></page-select> of {{numPages}}</a>
+		<a ng-click="selectPage(currentPage + 1)"><img src="/ocnt-client/img/next.gif"/></a>
+		<a ng-click="selectPage(numPages)"><img src="/ocnt-client/img/last.gif"/></a>
+	</div>
+	<div class="page_panel_right" style="display:inline;float:right;"></div>
+</nav>

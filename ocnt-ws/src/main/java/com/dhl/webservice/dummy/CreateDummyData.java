@@ -336,13 +336,13 @@ public class CreateDummyData {
 		List<HandlingUnit> hu_allocParent_List = new ArrayList<HandlingUnit>();
 		List<HandlingUnit> hu_notAssignedParent_List = new ArrayList<HandlingUnit>();
 		
-		int no_records_allocatedParent = randInt(0, 1);
+		int no_records_allocatedParent = randInt(11, 22);
 		int no_pages_allocatedParent = no_records_allocatedParent/5;
 		
 		amv_wrapped.setAllocatedParent_noOfRec(no_records_allocatedParent);
 		amv_wrapped.setAllocatedParent_noOfPage(no_pages_allocatedParent);
 		
-		int no_records_notAssignedParent = randInt(2, 25);
+		int no_records_notAssignedParent = randInt(11, 22);
 		int no_pages_notAssignedParent = no_records_notAssignedParent/5;
 		
 		amv_wrapped.setNotAssignedParent_noOfPage(no_pages_notAssignedParent);

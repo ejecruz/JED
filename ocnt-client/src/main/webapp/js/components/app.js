@@ -20,7 +20,7 @@ ocnt.app.config(['$urlRouterProvider','$stateProvider',
 	                	});
 	                	$stateProvider.state('assignMovement',{
 	                		url:'/assignMovement',
-	                		templateUrl: '/ocnt-client/view/modules/movement/assign_movement.html',
+	                		templateUrl: '/ocnt-client/view/modules/movement/assignMovement.html',
 	                		controller: 'assignMovementCtrl'
 	                	});
 					}]);

@@ -2,42 +2,93 @@
 
 ocnt.app.factory('assignMovementService', ['$q', '$filter', '$timeout','$http', function ($q, $filter, $timeout,$http,$scope) {
 	
-	var items = [];
-	this.isRefresh = null;
-	var results = {};
+	var itemsAllocatedData = [];
+	this.isRefreshAllocatedData= null;
+	var resultsAllocatedData = {};
 	
-	function retrieveAssignMovementDetails(){
-			var deferred = $q.defer();
-			$http.post('http://localhost:8080/ocnt-ws/rest/movement/generateAssignMovementJson').
+	var itemsNonAssignedData = [];
+	this.isRefreshNonAssignedData = null;
+	var resultsNonAssignedData = {};
+	
+	//1
+	function retrieveAssignMovementAllocatedDataDetails(start, number, params,refresh,deferred){
+		if(this.isRefreshAllocatedData == null || this.isRefreshAllocatedData){
+			$http.post('http://localhost:8080/ocnt-ws/rest/movement/getAssignMovementAllocatedDataAsJson').
 			then(function(response){
-				items = response.data;
-				console.log(items);
-				//getPage(start, number, params);
-				deferred.resolve(items);
+				resultsAllocatedData = response.data;
+				console.log(resultsAllocatedData);
+				this.isRefreshAllocatedData = false;
+				resultsAllocatedData.numberOfPages = parseInt(resultsAllocatedData.length/5);
+				resultsAllocatedData.numberOfRecords = resultsAllocatedData.length;
+				//results.dest_filter = items.dest_filter_dropdown;
+				//results.opt_filter = items.opt_filter_dropdown;
+				getPageAllocatedData(start, number, params);
+				deferred.resolve(resultsAllocatedData);
 			});
-			
-			return deferred.promise;
+		}else{
+			getPageAllocatedData(start, number, params);
+			deferred.resolve(resultsAllocatedData);
+		}
 	}
 	
-	/*function getPage(start, number, params, items) {
-			var filtered = params.search.predicateObject ? $filter('filter')(items, params.search.predicateObject) : items;
+	function getPageAllocatedData(start, number, params) {
+			var filtered = params.search.predicateObject ? $filter('filter')(resultsAllocatedData, params.search.predicateObject) : resultsAllocatedData;
 			if (params.sort.predicate) {
 				filtered = $filter('orderBy')(filtered, params.sort.predicate, params.sort.reverse);
 			}
 			var result = filtered.slice(start, start + number);
-			results.data = result;
+			resultsAllocatedData.data = result;
 	}
 
-	function retrievePageRecords(start, number, params,refresh){
+	function retrievePageRecordsAllocatedData(start, number, params,refresh){
 		var deferred = $q.defer();
-		retrieveAssignMovementDetails(start, number, params,refresh,deferred);
+		retrieveAssignMovementAllocatedDataDetails(start, number, params,refresh,deferred);
 		return deferred.promise;
-	}*/
+	}
+	
+	//2
+	function retrieveAssignMovementNonAssignedDataDetails(start, number, params,refresh,deferred){
+		if(this.isRefreshNonAssignedData == null || this.isRefreshNonAssignedData){
+			$http.post('http://localhost:8080/ocnt-ws/rest/movement/getAssignMovementNonAssignedDataAsJson').
+			then(function(response){
+				resultsNonAssignedData = response.data;
+				console.log(resultsNonAssignedData);
+				this.isRefreshNonAssignedData = false;
+				resultsNonAssignedData.numberOfPages = parseInt(resultsNonAssignedData.length/5);
+				resultsNonAssignedData.numberOfRecords = resultsNonAssignedData.length;
+				//results.dest_filter = items.dest_filter_dropdown;
+				//results.opt_filter = items.opt_filter_dropdown;
+				getPageNonAssignedData(start, number, params);
+				deferred.resolve(resultsNonAssignedData);
+			});
+		}else{
+			getPageNonAssignedData(start, number, params);
+			deferred.resolve(resultsNonAssignedData);
+		}
+	}
+	
+	function getPageNonAssignedData(start, number, params) {
+			var filtered = params.search.predicateObject ? $filter('filter')(resultsNonAssignedData, params.search.predicateObject) : resultsNonAssignedData;
+			if (params.sort.predicate) {
+				filtered = $filter('orderBy')(filtered, params.sort.predicate, params.sort.reverse);
+			}
+			var result = filtered.slice(start, start + number);
+			resultsNonAssignedData.data = result;
+	}
+
+	function retrievePageRecordsNonAssignedData(start, number, params,refresh){
+		var deferred = $q.defer();
+		retrieveAssignMovementNonAssignedDataDetails(start, number, params,refresh,deferred);
+		return deferred.promise;
+	}
 	
 	return {
-		retrieveAssignMovementDetails:retrieveAssignMovementDetails,
-		//getPage: getPage,
-		//retrievePageRecords:retrievePageRecords
+		retrieveAssignMovementAllocatedDataDetails:retrieveAssignMovementAllocatedDataDetails,
+		getPageAllocatedData: getPageAllocatedData,
+		retrievePageRecordsAllocatedData:retrievePageRecordsAllocatedData,
+		retrieveAssignMovementNonAssignedDataDetails:retrieveAssignMovementNonAssignedDataDetails,
+		getPageNonAssignedData:getPageNonAssignedData,
+		retrievePageRecordsNonAssignedData:retrievePageRecordsNonAssignedData
 	};
 
 }]);

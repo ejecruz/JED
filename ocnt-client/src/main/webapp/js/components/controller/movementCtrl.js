@@ -1,8 +1,8 @@
 (function(ocnt) {
 	ocnt.app = angular.module('OCNT');
 
-	ocnt.app.controller('movementCtrl', [ '$scope', '$http','hotkeys','$state','MovementService','$interval',
-			function(scope, $http,hotkeys,$state,service,$interval) {
+	ocnt.app.controller('movementCtrl', [ '$scope', '$http','hotkeys','$state','MovementService','dataService','$interval',
+			function(scope, $http,hotkeys,$state,service,dataService,$interval) {
 		 
 		 var ctrl = this;
 		 this.displayed = [];
@@ -53,6 +53,8 @@
 		 }
 		
 		scope.processOpt = function processOpt(row){
+			console.log(row);
+			dataService.set(row);
 			$state.go('assignMovement');
 		}
 		

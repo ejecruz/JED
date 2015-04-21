@@ -123,11 +123,12 @@ nav>.ng-scope ul {
 			</thead>
 			<tbody ng-show="!mc.isLoading">
 				<tr ng-repeat="row in mc.displayed">
-					<td ng-hide="hideCol">
-					<select ng-model="row" ng-change="processOpt(row)">
-							<option></option>
-							<option ng-repeat="operation in mc.opt_filter">{{operation}}</option>
-					</select></td>
+					<td id="{{row.movementNo}}" ng-hide="hideCol">
+						<select ng-model="amc.row" ng-change="processOpt(row)">
+								<option></option>
+								<option ng-repeat="operation in mc.opt_filter">{{operation}}</option>
+						</select>
+					</td>
 					<td>{{row.movementNo}}</td>
 					<td>{{row.transptReg}}</td>
 					<td>{{row.transptType}}</td>
