@@ -44,6 +44,16 @@ nav>.ng-scope ul {
 
 	<div class="content" ng-controller="assignMovementCtrl as amc">
 		<br /><br />
+		<table>
+			<tbody ng-show = "amc.showMovementMessage">
+				<tr>
+					<td>
+						<span id="frmSubmitData:j_idt63"><ul><li class="commonErrorMessage">[3081] Successfully Assigned HU to Movement</li></ul></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
 		<table style="width: 100%">
 			<tr>
 				<td align="left" style="width: 10%"><input
@@ -84,38 +94,37 @@ nav>.ng-scope ul {
 		</table>
 		 <br />
 		<div id="frmSubmitData:dtAllocated" class="ui-datatable ui-widget">
-			<div class="ui-datatable-header ui-widget-header ui-corner-top">
-				<label> Allocated Parent HU's</label><label> HUID </label><input
-					id="frmSubmitData:dtAllocated:txtUnassignHUID" type="text"
-					name="frmSubmitData:dtAllocated:txtUnassignHUID" autocomplete="off"
-					value="" class="contentInput" onblur="changeToUpper(this)"
-					onkeypress="checkKeyPress(event);" /> (PL checkpoint will be generated)
-			</div>
 			<div class="ui-datatable-tablewrapper">
 				<table role="grid" st-pipe="amc.callServerAllocatedData" st-table="amc.displayedAllocatedData">
 					<thead id="frmSubmitData:dtAllocated_head">
+						<tr>
+							<th class="result_head" colspan = "7" style="font-size:14px">
+									<label> Allocated Parent HU's HUID</label>
+									<input st-search="handlingUnit" /> (PL checkpoint will be generated)
+							</th>
+						</tr>
 						<tr role="row">
-							<th id="frmSubmitData:dtAllocated:j_idt101" class="ui-state-default" role="columnheader" style="width: 60px;"><span>Opt</span></th>
-							<th id="frmSubmitData:dtAllocated:j_idt105" class="ui-state-default" role="columnheader"><span>HUID</span></th>
-							<th id="frmSubmitData:dtAllocated:j_idt107" class="ui-state-default" role="columnheader"><span>Reg No.</span></th>
-							<th id="frmSubmitData:dtAllocated:j_idt109" class="ui-state-default" role="columnheader" style="width: 80px;"><span>HU Type</span></th>
-							<th id="frmSubmitData:dtAllocated:j_idt111" class="ui-state-default" role="columnheader"><span>EPO</span></th>
-							<th id="frmSubmitData:dtAllocated:j_idt113" class="ui-state-default" role="columnheader"><span>Flagging</span></th>
-							<th id="frmSubmitData:dtAllocated:j_idt115" class="ui-state-default" role="columnheader"><span>Status</span></th>
+							<th class="ui-state-default" style="width: 60px;" ng-hide="hideCol"><span>Opt</span></th>
+							<th class="ui-state-default" style="width: 130px;" st-sort="handlingUnit"><span>HUID</span></th>
+							<th class="ui-state-default" style="width: 120px;"><span>Reg No.</span></th>
+							<th class="ui-state-default" style="width: 80px;"><span>HU Type</span></th>
+							<th class="ui-state-default"><span>EPO</span></th>
+							<th class="ui-state-default"><span>Flagging</span></th>
+							<th class="ui-state-default"><span>Status</span></th>
 						</tr>
 					</thead>
 					<tbody ng-show="!amc.isAllocedDataTableEmpty" id="frmSubmitData:dtAllocated_data" class="ui-datatable-data ui-widget-content">
 						<tr class="ui-widget-content ui-datatable-empty-message" ng-repeat="row in amc.displayedAllocatedData">
 							<td>
-								<select>
-										<option></option>
-										<option>6</option>
-										<option>9</option>
+								<select name="opt1">
+										<option value="1"></option>
+										<option value="6">6</option>
+										<option value="9">9</option>
 								</select>
 							</td>
 							<td>{{row.handlingUnit}}</td>
-							<td>{{row.handlingUnitType}}</td>
 							<td>{{row.regNo}}</td>
+							<td>{{row.handlingUnitType}}</td>
 							<td>{{row.epo}}</td>
 							<td>{{row.flagging}}</td>
 							<td>{{row.status}}</td>
@@ -128,7 +137,7 @@ nav>.ng-scope ul {
 					</tbody>
 					<tfoot>
 						<tr style="height: 20px;">
-							<td class="text-center" colspan="7" style="background-color: #FFD900; height: 20px;">
+							<td class="result_head" colspan="7" style="background-color: #FFD900; height: 20px;">
 								<div style="height:20px;" st-items-by-page="5" st-pagination="" st-template="/ocnt-client/view/modules/movement/assign_movement_pagination.custom.html"></div>
 							</td>
 						</tr>
@@ -145,31 +154,28 @@ nav>.ng-scope ul {
 		</span>
 		<br /> 
 		<div id="frmSubmitData:dtDeallocate" class="ui-datatable ui-widget"> 
-		<div class="ui-datatable-header ui-widget-header ui-corner-top">
-			<input id="frmSubmitData:dtDeallocate:globalFilter"
-				name="frmSubmitData:dtDeallocate:globalFilter" type="text"
-				style="display: none"
-				class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all myGlobalFilter" />
-			<label> Parent HU's Not Assigned EPO</label>
-			<div id="frmSubmitData:dtDeallocate:globalFilterOption"
-				class="ui-selectonemenu ui-widget ui-state-default ui-corner-all ui-helper-clearfix">
-							<select>
-								<option> </option>
-								<option>ALL</option>
-							</select>
-			</div>
-		</div>
 		<div class="ui-datatable-tablewrapper">
 			<table role="grid" st-pipe="amc.callServerNonAssignedData" st-table="amc.displayedNonAssignedData">
 				<thead id="frmSubmitData:dtDeallocate_head">
+					<tr>
+						<th class="result_head" colspan = "7" style="font-size:14px">
+							<label> Parent HU's Not Assigned EPO</label>
+							<select st-search="epo">
+								<option> </option>
+								<option>ALL</option>
+								<option>HKGHUB</option>
+								<option>CEB</option>
+							</select>
+						</th>
+					</tr>
 					<tr role="row">
-						<th id="frmSubmitData:dtDeallocate:j_idt123" class="ui-state-default" role="columnheader" style="width: 60px;"><span>Opt</span></th>
-						<th id="frmSubmitData:dtDeallocate:j_idt127" class="ui-state-default" role="columnheader" style="width: 130px;"><span>HUID</span></th>
-						<th id="frmSubmitData:dtDeallocate:j_idt129" class="ui-state-default" role="columnheader" style="width: 120px;"><span>Reg No.</span></th>
-						<th id="frmSubmitData:dtDeallocate:j_idt131" class="ui-state-default" role="columnheader" style="width: 80px;"><span>HU Type</span></th>
-						<th id="frmSubmitData:dtDeallocate:epoColumn" class="ui-state-default" role="columnheader"><span>EPO</span></th>
-						<th id="frmSubmitData:dtDeallocate:j_idt134" class="ui-state-default" role="columnheader"><span>Flagging</span></th>
-						<th id="frmSubmitData:dtDeallocate:j_idt136" class="ui-state-default" role="columnheader"><span>Status</span></th>
+						<th class="ui-state-default" style="width: 60px;"><span>Opt</span></th>
+						<th class="ui-state-default" style="width: 130px;"><span>HUID</span></th>
+						<th class="ui-state-default" style="width: 120px;"><span>Reg No.</span></th>
+						<th class="ui-state-default" style="width: 80px;"><span>HU Type</span></th>
+						<th class="ui-state-default" st-sort="epo"><span>EPO</span></th>
+						<th class="ui-state-default"><span>Flagging</span></th>
+						<th class="ui-state-default"><span>Status</span></th>
 					</tr>
 				</thead>
 				<tfoot></tfoot>
@@ -179,14 +185,14 @@ nav>.ng-scope ul {
 					<tr data-ri="0" class="ui-widget-content ui-datatable-even" role="row" ng-repeat="row in amc.displayedNonAssignedData">
 						<td>
 							<select>
-									<option></option>
-									<option>6</option>
-									<option>9</option>
+									<option value="1"></option>
+									<option value="6">6</option>
+									<option value="9">9</option>
 							</select>
 						</td>
 					<td>{{row.handlingUnit}}</td>
-					<td>{{row.handlingUnitType}}</td>
 					<td>{{row.regNo}}</td>
+					<td>{{row.handlingUnitType}}</td>
 					<td>{{row.epo}}</td>
 					<td>{{row.flagging}}</td>
 					<td>{{row.status}}</td>
@@ -199,7 +205,7 @@ nav>.ng-scope ul {
 				</tbody>
 				<tfoot>
 					<tr style="height: 20px;">
-						<td class="text-center" colspan="7" style="background-color: #FFD900; height: 20px;">
+						<td class="result_head" colspan="7" style="background-color: #FFD900; height: 20px;">
 							<div style="height:20px;" st-items-by-page="5" st-pagination="" st-template="/ocnt-client/view/modules/movement/assign_movement_pagination.custom.html">
 							</div>
 						</td>

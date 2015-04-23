@@ -55,7 +55,8 @@
 		scope.processOpt = function processOpt(row){
 			console.log(row);
 			dataService.set(row);
-			$state.go('assignMovement');
+			//$state.go('assignMovement');
+			$state.go('assignMovement', {}, {reload: true});
 		}
 		
 		scope.searchDayRange = function searchDayRange(minusDate,plusDate){

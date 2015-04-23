@@ -29,7 +29,7 @@ input { font-family: Helvetica; }
 }
 .content
 {       
-    height: 405px;
+    height: auto;
     float: right;
     font-size: 9pt;
     font-weight: bold;

@@ -10,10 +10,12 @@
 		 this.selected_movement_data = dataService.get();
 		 this.totalNonAssignedRec = 0;
 		 this.totalAllocatedRec = 0;
+		 this.showMovementMessage = false;
 		 scope.mode = "Edit";
 		 var loadMovementTimer;
 		 var tableStateTemp;
 		 var refresh;
+
 		 
 		 
 		 //1
@@ -92,6 +94,17 @@
 			 });
 		 
 		};
+		
+		scope.processOpt = function processOpt(){
+			//console.log(row);
+			//dataService.set(row);
+			ctrl.showMovementMessage = true;
+			
+			//$state.go($state.current, {}, {reload: true}); 
+			//window.location.reload();
+			//document.getElementsByName('opt1').options = false;
+			
+		}
 		
 		
 	}]);
