@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+	http://www.springframework.org/schema/tx 
+ 	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+		<bean id="dsJndiTemplate" class="org.springframework.jndi.JndiTemplate">  
+        <property name="environment">  
+            <props>  
+                <prop key="java.naming.provider.url">http://127.0.0.1:7001</prop>  
+                <prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>  
+                <prop key="java.naming.security.principal">weblogic</prop>  
+                <prop key="java.naming.security.credentials">weblogic123</prop>  
+            </props>  
+        </property>  
+    </bean>  
+  
+    <bean id="weblogicDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">  
+         <property name="jndiTemplate">  
+            <ref local="dsJndiTemplate" />  
+        </property>  
+        <property name="jndiName">  
+            <value>jdbc/contdev</value>  
+        </property>  
+    </bean>   
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="weblogicDataSource" />
+	</bean>
+
+	<bean id="movementQuery"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="movementQuery" value="classpath:/movementQuery.xml" />
+	</bean>
+
+	<bean id="movementDao" class="com.dhl.ocnt.dao.MovementDaoImpl">
+		<property name="movementQuery" ref="movementQuery" />
+	</bean>
+
+</beans>

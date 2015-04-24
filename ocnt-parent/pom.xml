@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -7,7 +8,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>OCNT Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<properties>
 		<springframework.version>4.1.5.RELEASE</springframework.version>
 		<log4j.version>1.2.17</log4j.version>
@@ -27,49 +28,86 @@
 		</repository>
 	</repositories>
 	<dependencyManagement>
-	<dependencies>
-		<dependency>
+		<dependencies>
+			<dependency>
 				<groupId>com.dhl.ocnt</groupId>
 				<artifactId>ocnt-beans</artifactId>
 				<version>${project.version}</version>
-		</dependency>
-		<dependency>
+			</dependency>
+			<dependency>
+				<groupId>com.dhl.ocnt</groupId>
+				<artifactId>ocnt-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.dhl.ocnt</groupId>
+				<artifactId>ocnt-dao</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>com.dhl.ocnt</groupId>
 				<artifactId>ocnt-ws</artifactId>
 				<version>${project.version}</version>
-		</dependency>
-	</dependencies>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.oracle</groupId>
+				<artifactId>ojdbc6</artifactId>
+				<version>11.2.0</version>
+			</dependency>
+		</dependencies>
 	</dependencyManagement>
-	
+
 	<modules>
 		<module>../ocnt-beans</module>
+		<module>../ocnt-dao</module>
+		<module>../ocnt-service</module>
 		<module>../ocnt-ws</module>
-        <module>../ocnt-client</module>
-    </modules>
-	
+		<module>../ocnt-client</module>
+	</modules>
+
 	<build>
 		<finalName>OCNT</finalName>
 		<pluginManagement>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${plugin.compiler.version}</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-					<fork>true</fork>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <configuration>
-                        <testFailureIgnore>true</testFailureIgnore>
-                    </configuration>
-             </plugin>
-		</plugins>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${plugin.compiler.version}</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<fork>true</fork>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<testFailureIgnore>true</testFailureIgnore>
+					</configuration>
+				</plugin>
+			</plugins>
 		</pluginManagement>
 	</build>
 </project>

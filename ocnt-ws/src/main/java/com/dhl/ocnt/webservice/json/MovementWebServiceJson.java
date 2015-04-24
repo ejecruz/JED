@@ -11,11 +11,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.dhl.ocnt.model.AssignMovementWrapper;
 import com.dhl.ocnt.model.HandlingUnit;
 import com.dhl.ocnt.model.Movement;
-import com.dhl.ocnt.model.MovementWrapped;
+import com.dhl.ocnt.model.Movement_backup;
+import com.dhl.ocnt.model.Page;
+import com.dhl.ocnt.service.MovementService.MovementService;
 import com.dhl.webservice.dummy.CreateDummyData;
 
 @Path("/movement")
@@ -23,6 +26,9 @@ public class MovementWebServiceJson {
 
 	private final static Logger logger = Logger
 			.getLogger(MovementWebServiceJson.class);
+	
+	@Autowired
+	private MovementService movementService;
 	
 	@POST
 	@Path("getAssignMovementAllocatedDataAsJson")
@@ -57,46 +63,26 @@ public class MovementWebServiceJson {
 	}
 	
 	@POST
-	@Path("generateJson")
+	@Path("generateJson/{location}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public MovementWrapped getDataAsJson(){
-		
-		System.out.println("getDataAsJson()");
-		
-		MovementWrapped movementList = new MovementWrapped();
-		
-		movementList = CreateDummyData.createDummyData();
-		
-		//http://localhost:8080/ocnt-ws/rest/movement/generateJson
-		
-		return movementList;
+	public Page<Movement> getMovement(@PathParam("location") String location){
+		return movementService.getMovementList(0, 0, 1, 10, location);
 	}
 	
 	@POST
-	@Path("generateJson/{plus_date}/{minus_date}")
+	@Path("generateJson/{plus_date}/{minus_date}/{location}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public MovementWrapped getDataAsJson(@PathParam("plus_date") String plus_date, 
-											@PathParam("minus_date") String minus_date){
+	public Page<Movement> getMovement(@PathParam("plus_date") int plus_date, 
+											@PathParam("minus_date") int minus_date,
+											@PathParam("location") String location){
 		
-		MovementWrapped movementList = new MovementWrapped();
-		
-		System.out.println("getDataAsJson() With Parameters");
-		System.out.println("plus_date: "+plus_date);
-		System.out.println("minus_date: "+minus_date);
-		
-		movementList = CreateDummyData.createDummyData(plus_date, minus_date);
-		
-		//http://localhost:8080/ocnt-ws/rest/movement/generateJson/{plus_date}/{minus_date}
-		
-		return movementList;
+		return movementService.getMovementList(plus_date, minus_date, 1, 10, location);
 	}
-	
-	
 	
 	@POST
 	@Path("/send")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response consumeDataAsJson(Movement movement){
+	public Response consumeDataAsJson(Movement_backup movement){
 		
 		String output = movement.toString();
 		

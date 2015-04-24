@@ -12,6 +12,21 @@
     <packaging>war</packaging>
     <name>OCNT Web App</name>
     
+    <dependencies>
+    	<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+    </dependencies>
+    
 	<!--  <build>
 	 <plugins>
 		<plugin>

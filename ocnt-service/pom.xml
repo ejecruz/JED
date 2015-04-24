@@ -8,9 +8,9 @@
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>../ocnt-parent/pom.xml</relativePath>
 	</parent>
-	<artifactId>ocnt-ws</artifactId>
+	<artifactId>ocnt-service</artifactId>
 	<packaging>jar</packaging>
-	<name>OCNT Web Service</name>
+	<name>OCNT Service</name>
 
 	<dependencies>
 		<dependency>
@@ -19,11 +19,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.dhl.ocnt</groupId>
-			<artifactId>ocnt-service</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
+			<artifactId>ocnt-dao</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -38,21 +34,6 @@
 			<artifactId>junit</artifactId>
 			<version>4.8.2</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-server</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-json</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-client</artifactId>
-			<version>1.8</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>

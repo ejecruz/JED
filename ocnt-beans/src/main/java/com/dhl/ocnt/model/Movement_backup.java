@@ -2,7 +2,7 @@ package com.dhl.ocnt.model;
 
 import java.util.List;
 
-public class Movement {
+public class Movement_backup {
 	
 	private String operation;
 	private String movementNo;
@@ -17,7 +17,7 @@ public class Movement {
 
 
 	
-	public Movement(){
+	public Movement_backup(){
 		
 	}
 
