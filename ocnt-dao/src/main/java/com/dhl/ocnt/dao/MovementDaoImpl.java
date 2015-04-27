@@ -17,7 +17,7 @@ import com.dhl.ocnt.model.Page;
 public class MovementDaoImpl implements MovementDao{
 
 	@Autowired
-	private JdbcTemplate jt;
+	private JdbcTemplate jdbcTemplate;
 	
 	@Autowired
 	private Properties movementQuery;
@@ -26,7 +26,7 @@ public class MovementDaoImpl implements MovementDao{
 	public Page<Movement> getMovementList(int minusDate, int plusDate,
 			final int pageNo,final int pageSize,String location) {
 		PaginationHelper<Movement> ph = new PaginationHelper<Movement>();
-		return ph.fetchPage(jt, movementQuery.getProperty("getMovementCount"), 
+		return ph.fetchPage(jdbcTemplate, movementQuery.getProperty("getMovementCount"), 
 								movementQuery.getProperty("getMovement"), 
 								new Object[]{}, pageNo, pageSize, new RowMapper<Movement>(){
 

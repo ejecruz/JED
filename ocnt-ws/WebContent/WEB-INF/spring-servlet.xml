@@ -22,4 +22,37 @@
 		<property name="prefix" value="/view/" />
 		<property name="suffix" value=".html" />
 	</bean>
+	
+	<bean id="dsJndiTemplate" class="org.springframework.jndi.JndiTemplate">  
+        <property name="environment">  
+            <props>  
+                <prop key="java.naming.provider.url">http://127.0.0.1:7001</prop>  
+                <prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>  
+                <prop key="java.naming.security.principal">weblogic</prop>  
+                <prop key="java.naming.security.credentials">welcome1</prop>  
+            </props>  
+        </property>  
+    </bean>  
+  
+    <bean id="weblogicDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">  
+         <property name="jndiTemplate">  
+            <ref bean="dsJndiTemplate" />  
+        </property>  
+        <property name="jndiName">  
+            <value>jdbc/contdev</value>  
+        </property>  
+    </bean>   
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="weblogicDataSource" />
+	</bean>
+
+	<bean id="movementQuery"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="movementQuery" value="classpath:/movementQuery.xml" />
+	</bean>
+
+	<bean id="movementDao" class="com.dhl.ocnt.dao.MovementDaoImpl">
+		<property name="movementQuery" ref="movementQuery" />
+	</bean>
 </beans>
