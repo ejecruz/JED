@@ -5,7 +5,7 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', functi
 	var items = [];
 	this.isRefresh = null;
 	var results = {};
-	var movementUrl = 'http://localhost:8080/ocnt-ws/rest/movement/generateJson/hkghub';
+	var movementUrl = urlPath + '/ocnt-ws/rest/movement/generateJson/hkghub';
 	
 	function retrieveMovementDetails(start, number, params,refresh,deferred, url){
 		if((refresh == null && this.isRefresh == null) || refresh || this.isRefresh){

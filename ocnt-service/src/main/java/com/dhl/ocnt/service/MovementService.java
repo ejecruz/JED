@@ -1,4 +1,4 @@
-package com.dhl.ocnt.service.MovementService;
+package com.dhl.ocnt.service;
 
 import com.dhl.ocnt.model.Movement;
 import com.dhl.ocnt.model.Page;

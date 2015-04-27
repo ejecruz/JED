@@ -1,11 +1,13 @@
-package com.dhl.ocnt.service.MovementService;
+package com.dhl.ocnt.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.dhl.ocnt.dao.MovementDao;
 import com.dhl.ocnt.model.Movement;
 import com.dhl.ocnt.model.Page;
 
+@Service
 public class MovementServiceImpl implements MovementService{
 
 	@Autowired

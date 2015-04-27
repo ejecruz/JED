@@ -10,23 +10,21 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.dhl.ocnt.model.AssignMovementWrapper;
 import com.dhl.ocnt.model.HandlingUnit;
 import com.dhl.ocnt.model.Movement;
 import com.dhl.ocnt.model.Movement_backup;
 import com.dhl.ocnt.model.Page;
-import com.dhl.ocnt.service.MovementService.MovementService;
+import com.dhl.ocnt.service.MovementService;
 import com.dhl.webservice.dummy.CreateDummyData;
 
+@Component
 @Path("/movement")
 public class MovementWebServiceJson {
 
-	private final static Logger logger = Logger
-			.getLogger(MovementWebServiceJson.class);
-	
 	@Autowired
 	private MovementService movementService;
 	
