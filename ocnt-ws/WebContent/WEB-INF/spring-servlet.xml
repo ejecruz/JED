@@ -15,7 +15,8 @@
 	<context:component-scan base-package="com.dhl.ocnt.service" />
 	<context:component-scan base-package="com.dhl.ocnt.dao" />
 	<mvc:annotation-driven />
-
+	
+	<context:property-placeholder location="classpath:/movementQuery.xml" />
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -47,12 +48,4 @@
 		<property name="dataSource" ref="weblogicDataSource" />
 	</bean>
 
-	<bean id="movementQuery"
-		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		<property name="movementQuery" value="classpath:/movementQuery.xml" />
-	</bean>
-
-	<bean id="movementDao" class="com.dhl.ocnt.dao.MovementDaoImpl">
-		<property name="movementQuery" ref="movementQuery" />
-	</bean>
 </beans>
