@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="ocnt-ws">
-        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp/WEB-INF"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <dependent-module archiveName="ocnt-beans-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ocnt-beans/ocnt-beans">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="ocnt-service.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ocnt-service/ocnt-service">
+        <dependent-module archiveName="ocnt-dao-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ocnt-dao/ocnt-dao">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="ocnt-dao.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ocnt-dao/ocnt-dao">
+        <dependent-module archiveName="ocnt-service-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ocnt-service/ocnt-service">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="ocnt-ws"/>

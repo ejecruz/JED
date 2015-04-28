@@ -86,7 +86,6 @@
 	</modules>
 
 	<build>
-		<finalName>OCNT</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
