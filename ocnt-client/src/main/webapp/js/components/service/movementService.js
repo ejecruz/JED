@@ -5,6 +5,7 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', functi
 	var items = [];
 	this.isRefresh = null;
 	var results = {};
+	var dest = [];
 	var movementUrl = urlPath + '/ocnt-ws/rest/movement/generateJson/KULGTW';
 	
 	function retrieveMovementDetails(start, number, params,refresh,deferred, url){
@@ -16,7 +17,14 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', functi
 				this.isRefresh = false;
 				results.totalNoOfPage = items.totalNoOfPage;
 				results.totalNoOfRec = items.totalNoOfRec;
-				results.dest_filter = items.dest_filter_dropdown;
+				
+				$.each(items,function(index,value){
+					if($.inArray(value.destination,dest)==-1){
+						dest.push(value.destination);
+					}
+				});
+				
+				results.dest_filter = dest;
 				results.opt_filter = items.opt_filter_dropdown;
 				getPage(start, number, params);
 				deferred.resolve(results);
