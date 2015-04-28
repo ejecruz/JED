@@ -3,7 +3,8 @@ package com.dhl.ocnt.model;
 import java.util.List;
 
 public class Movement {
-	
+
+	private String movementId;
 	private String operation;
 	private String movementNo;
 	private String transptReg;
@@ -19,6 +20,14 @@ public class Movement {
 	
 	public Movement(){
 		
+	}
+	
+	public String getMovementId() {
+		return movementId;
+	}
+
+	public void setMovementId(String movementId) {
+		this.movementId = movementId;
 	}
 
 	public String getOperation() {

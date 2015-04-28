@@ -92,6 +92,7 @@ nav>.ng-scope ul {
 			<thead>
 				<tr>
 					<th st-sort="operation" ng-hide="hideCol">OPT</th>
+					<th st-sort="movementId" ng-hide="hideCol" style="display:none;"></th>
 					<th st-sort="movementNo">Movement No</th>
 					<th st-sort="transptReg">TRANSPT REG</th>
 					<th st-sort="transptType">TRANSPT TYPE</th>
@@ -104,6 +105,7 @@ nav>.ng-scope ul {
 				</tr>
 				<tr>
 					<th ng-hide="hideCol"></th>
+					<th ng-hide="hideCol" style="display:none;"></th>
 					<th><input st-search="movementNo" /></th>
 					<th></th>
 					<th></th>
@@ -126,9 +128,12 @@ nav>.ng-scope ul {
 					<td id="{{row.movementNo}}" ng-hide="hideCol">
 						<select ng-model="amc.row" ng-change="processOpt(row)">
 								<option></option>
-								<option ng-repeat="operation in mc.opt_filter">{{operation}}</option>
+								<!-- <option ng-repeat="operation in mc.opt_filter">{{operation}}</option> -->
+								<option>4</option>
+								<option>5</option>
 						</select>
 					</td>
+					<td style="display:none;">{{row.movementId}}</td>
 					<td>{{row.movementNo}}</td>
 					<td>{{row.transptReg}}</td>
 					<td>{{row.transptType}}</td>
