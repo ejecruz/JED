@@ -1,5 +1,6 @@
 package com.dhl.ocnt.dao;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -8,6 +9,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.dhl.ocnt.dao.util.DHLFormat;
+import com.dhl.ocnt.dao.util.DateTimeUtil;
 import com.dhl.ocnt.dao.util.PaginationHelper;
 import com.dhl.ocnt.model.Movement;
 import com.dhl.ocnt.model.Page;
@@ -43,14 +46,19 @@ public class MovementDaoImpl implements MovementDao{
 									public Movement mapRow(ResultSet rs,int i) 
 											throws SQLException {
 										Movement movement = new Movement();
-										movement.setMovementNo(rs.getString("MOVEMENT_NUMBER"));
+										
+										Date stdDate = rs.getDate("MVMT_SCHD_DEPARTURE_DT");
+										Date cutOffTime = rs.getDate("CUT_OFF_TIME");
+										String movno = rs.getString("MOVEMENT_NUMBER");
+										String movId = rs.getString("MOVEMENT_DOCUMENT_ID");
+										movement.setMovementNo(movno + DateTimeUtil.getSlashDayFromDate(stdDate));
 										movement.setTransptReg(rs.getString("VEHICLE_ID"));
 										movement.setTransptType(rs.getString("FLEET_TYPE"));
-										movement.setSTD(rs.getString("MVMT_SCHD_DEPARTURE_DT"));
+										movement.setSTD(DateTimeUtil.formatDateToHhColonMm(stdDate));
 										movement.setDestination(rs.getString("DEST_FAC_ID"));
-										movement.setMawb(rs.getString("MOVEMENT_DOCUMENT_ID"));
+										movement.setMawb(DHLFormat.setMawbFormat(movId));
 										movement.setMfst("");
-										movement.setCutOffTime(rs.getString("CUT_OFF_TIME"));
+										movement.setCutOffTime(DateTimeUtil.formatDateToHhColonMm(cutOffTime));
 										movement.setStatus(rs.getString("MVMT_STATUS_CODE"));
 										return movement;
 									}
