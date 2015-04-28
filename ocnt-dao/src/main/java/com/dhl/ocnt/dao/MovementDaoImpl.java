@@ -37,13 +37,21 @@ public class MovementDaoImpl implements MovementDao{
 		PaginationHelper<Movement> ph = new PaginationHelper<Movement>();
 		return ph.fetchPage(jdbcTemplate, movementCountSQL, 
 				movementSQL, 
-								new Object[]{}, pageNo, pageSize, new RowMapper<Movement>(){
+								new Object[]{minusDate,plusDate,location}, pageNo, pageSize, new RowMapper<Movement>(){
 
 									@Override
 									public Movement mapRow(ResultSet rs,int i) 
 											throws SQLException {
 										Movement movement = new Movement();
 										movement.setMovementNo(rs.getString("MOVEMENT_NUMBER"));
+										movement.setTransptReg(rs.getString("VEHICLE_ID"));
+										movement.setTransptType(rs.getString("FLEET_TYPE"));
+										movement.setSTD(rs.getString("MVMT_SCHD_DEPARTURE_DT"));
+										movement.setDestination(rs.getString("DEST_FAC_ID"));
+										movement.setMawb(rs.getString("MOVEMENT_DOCUMENT_ID"));
+										movement.setMfst("");
+										movement.setCutOffTime(rs.getString("CUT_OFF_TIME"));
+										movement.setStatus(rs.getString("MVMT_STATUS_CODE"));
 										return movement;
 									}
 			

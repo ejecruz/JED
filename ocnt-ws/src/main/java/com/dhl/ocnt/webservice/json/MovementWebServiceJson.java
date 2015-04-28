@@ -63,7 +63,8 @@ public class MovementWebServiceJson {
 	@Path("generateJson/{location}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Page<Movement> getMovement(@PathParam("location") String location){
-		return movementService.getMovementList(0, 0, 1, 10, location);
+		Page<Movement> list = movementService.getMovementList(200, 200, 1, 10, location);
+		return list;
 	}
 	
 	@POST

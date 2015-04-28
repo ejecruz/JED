@@ -5,13 +5,13 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', functi
 	var items = [];
 	this.isRefresh = null;
 	var results = {};
-	var movementUrl = urlPath + '/ocnt-ws/rest/movement/generateJson/hkghub';
+	var movementUrl = urlPath + '/ocnt-ws/rest/movement/generateJson/KULGTW';
 	
 	function retrieveMovementDetails(start, number, params,refresh,deferred, url){
 		if((refresh == null && this.isRefresh == null) || refresh || this.isRefresh){
 			$http.post(url).
 			then(function(response){
-				items = response.data;
+				items = response.data.pageItems;
 				console.log(items);
 				this.isRefresh = false;
 				results.totalNoOfPage = items.totalNoOfPage;
@@ -28,7 +28,7 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', functi
 	}
 	
 	function getPage(start, number, params) {
-			var filtered = params.search.predicateObject ? $filter('filter')(items.list_mv_data, params.search.predicateObject) : items.list_mv_data;
+			var filtered = params.search.predicateObject ? $filter('filter')(items, params.search.predicateObject) : items;
 			if (params.sort.predicate) {
 				filtered = $filter('orderBy')(filtered, params.sort.predicate, params.sort.reverse);
 			}
