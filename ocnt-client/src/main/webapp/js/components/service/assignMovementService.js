@@ -10,12 +10,15 @@ ocnt.app.factory('assignMovementService', ['$q', '$filter', '$timeout','$http', 
 	this.isRefreshNonAssignedData = null;
 	var resultsNonAssignedData = {};
 	
+	var url1 = urlPath + '/ocnt-ws/rest/movement/getAssignMovementAllocatedDataAsJson';
+	var url2 = urlPath + '/ocnt-ws/rest/movement/getAssignMovementNonAssignedDataAsJson';
+	
 	//1
-	function retrieveAssignMovementAllocatedDataDetails(start, number, params,refresh,deferred){
+	function retrieveAssignMovementAllocatedDataDetails(start, number, params,refresh,deferred,url){
 		if(this.isRefreshAllocatedData == null || this.isRefreshAllocatedData){
-			$http.post('http://localhost:8080/ocnt-ws/rest/movement/getAssignMovementAllocatedDataAsJson').
+			$http.post(url).
 			then(function(response){
-				resultsAllocatedData = response.data;
+				resultsAllocatedData = response.data.pageItems;
 				console.log(resultsAllocatedData);
 				this.isRefreshAllocatedData = false;
 				resultsAllocatedData.numberOfPages = parseInt(resultsAllocatedData.length/5);
@@ -40,18 +43,18 @@ ocnt.app.factory('assignMovementService', ['$q', '$filter', '$timeout','$http', 
 			resultsAllocatedData.data = result;
 	}
 
-	function retrievePageRecordsAllocatedData(start, number, params,refresh){
+	function retrievePageRecordsAllocatedData(start, number, params,refresh, movementId){
 		var deferred = $q.defer();
-		retrieveAssignMovementAllocatedDataDetails(start, number, params,refresh,deferred);
+		retrieveAssignMovementAllocatedDataDetails(start, number, params,refresh,deferred,url1+"/"+movementId);
 		return deferred.promise;
 	}
 	
 	//2
-	function retrieveAssignMovementNonAssignedDataDetails(start, number, params,refresh,deferred){
+	function retrieveAssignMovementNonAssignedDataDetails(start, number, params,refresh,deferred,url){
 		if(this.isRefreshNonAssignedData == null || this.isRefreshNonAssignedData){
-			$http.post('http://localhost:8080/ocnt-ws/rest/movement/getAssignMovementNonAssignedDataAsJson').
+			$http.post(url).
 			then(function(response){
-				resultsNonAssignedData = response.data;
+				resultsNonAssignedData = response.data.pageItems;
 				console.log(resultsNonAssignedData);
 				this.isRefreshNonAssignedData = false;
 				resultsNonAssignedData.numberOfPages = parseInt(resultsNonAssignedData.length/5);
@@ -76,9 +79,9 @@ ocnt.app.factory('assignMovementService', ['$q', '$filter', '$timeout','$http', 
 			resultsNonAssignedData.data = result;
 	}
 
-	function retrievePageRecordsNonAssignedData(start, number, params,refresh){
+	function retrievePageRecordsNonAssignedData(start, number, params,refresh, movementId){
 		var deferred = $q.defer();
-		retrieveAssignMovementNonAssignedDataDetails(start, number, params,refresh,deferred);
+		retrieveAssignMovementNonAssignedDataDetails(start, number, params,refresh,deferred,url2+"/"+movementId);
 		return deferred.promise;
 	}
 	

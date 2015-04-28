@@ -8,6 +8,7 @@
 		 this.displayedAllocatedData = [];
 		 this.displayedNonAssignedData = [];
 		 this.selected_movement_data = dataService.get();
+		 var movementId = this.selected_movement_data.movementId;
 		 this.totalNonAssignedRec = 0;
 		 this.totalAllocatedRec = 0;
 		 this.showMovementMessage = false;
@@ -15,6 +16,7 @@
 		 var loadMovementTimer;
 		 var tableStateTemp;
 		 var refresh;
+		 
 
 		 
 		 
@@ -24,13 +26,14 @@
 			 tableStateTemp = tableState;
 			 ctrl.isAllocedDataTableEmpty = true;
 			 
+			 
 			 var pagination = tableState.pagination;
 
 			 var start = pagination.start || 0;   
 			 var number = pagination.number || 5; 
 			 scope.totalNoOfRec = 0;
 			 
-			 service.retrievePageRecordsAllocatedData(start, number, tableState,refresh).then(function (result) {
+			 service.retrievePageRecordsAllocatedData(start, number, tableState,refresh, movementId).then(function (result) {
 				 
 				 var pages = 0;
 				 
@@ -68,7 +71,7 @@
 			 var number = pagination.number || 5; 
 			 scope.totalNoOfRec = 0;
 			 
-			 service.retrievePageRecordsNonAssignedData(start, number, tableState,refresh).then(function (result) {
+			 service.retrievePageRecordsNonAssignedData(start, number, tableState,refresh, movementId).then(function (result) {
 				 
 				 var pages = 0;
 				 var records_per_page = 5;
