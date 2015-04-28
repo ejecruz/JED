@@ -43,7 +43,7 @@ public class MovementDaoImpl implements MovementDao{
 									public Movement mapRow(ResultSet rs,int i) 
 											throws SQLException {
 										Movement movement = new Movement();
-										movement.setMovementId(rs.getString("MOVEMENT_NUMBER"));
+										movement.setMovementNo(rs.getString("MOVEMENT_NUMBER"));
 										return movement;
 									}
 			

@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 import com.dhl.ocnt.model.AssignMovementWrapper;
 import com.dhl.ocnt.model.HandlingUnit;
 import com.dhl.ocnt.model.Movement;
-import com.dhl.ocnt.model.Movement_backup;
 import com.dhl.ocnt.model.Page;
 import com.dhl.ocnt.service.MovementService;
 import com.dhl.webservice.dummy.CreateDummyData;
@@ -80,7 +79,7 @@ public class MovementWebServiceJson {
 	@POST
 	@Path("/send")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response consumeDataAsJson(Movement_backup movement){
+	public Response consumeDataAsJson(Movement movement){
 		
 		String output = movement.toString();
 		
