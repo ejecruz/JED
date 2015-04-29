@@ -1,7 +1,5 @@
 package com.dhl.ocnt.webservice.json;
 
-import java.util.List;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -13,13 +11,12 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.dhl.ocnt.model.AssignMovementWrapper;
 import com.dhl.ocnt.model.HandlingUnit;
 import com.dhl.ocnt.model.Movement;
 import com.dhl.ocnt.model.MovementFilter;
 import com.dhl.ocnt.model.Page;
+import com.dhl.ocnt.service.HandlingUnitInMovementService;
 import com.dhl.ocnt.service.MovementService;
-import com.dhl.webservice.dummy.CreateDummyData;
 
 @Component
 @Path("/movement")
@@ -28,36 +25,41 @@ public class MovementWebServiceJson {
 	@Autowired
 	private MovementService movementService;
 	
+	@Autowired
+	private HandlingUnitInMovementService huService;
+	
 	@POST
-	@Path("getAssignMovementAllocatedDataAsJson")
+	@Path("getAssignMovementAllocatedDataAsJson/{movementId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<HandlingUnit> getAssignMovementAllocatedDataAsJson(){
+	public Page<HandlingUnit> getAssignMovementAllocatedDataAsJson(@PathParam("movementId") String movementId){
 		
 		System.out.println("getAssignMovementAllocatedDataAsJson()");
 		
-		AssignMovementWrapper assignMovementList = new AssignMovementWrapper();
+		//AssignMovementWrapper assignMovementList = new AssignMovementWrapper();
 		
-		assignMovementList = CreateDummyData.createAmcDummyData();
+		//assignMovementList = CreateDummyData.createAmcDummyData();
 		
 		//http://localhost:8080/ocnt-ws/rest/movement/getAssignMovementAllocatedDataAsJson
 		
-		return assignMovementList.getHu_data_allocated();
+		Page<HandlingUnit> huList = huService.getHandlingUnitInMovementList("E38168866DA01385E04321A948A5DDE8", 1, 5);
+		return huList;
 	}
 	
 	@POST
-	@Path("getAssignMovementNonAssignedDataAsJson")
+	@Path("getAssignMovementNonAssignedDataAsJson/{movementId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<HandlingUnit> getAssignMovementNonAssignedDataAsJson(){
+	public Page<HandlingUnit> getAssignMovementNonAssignedDataAsJson(@PathParam("movementId") String movementId){
 		
 		System.out.println("getAssignMovementNonAssignedDataAsJson()");
 		
-		AssignMovementWrapper assignMovementList = new AssignMovementWrapper();
+		//AssignMovementWrapper assignMovementList = new AssignMovementWrapper();
 		
-		assignMovementList = CreateDummyData.createAmcDummyData();
+		//assignMovementList = CreateDummyData.createAmcDummyData();
 		
 		//http://localhost:8080/ocnt-ws/rest/movement/getAssignMovementNonAssignedDataAsJson
 		
-		return assignMovementList.getHu_data_notAssigned();
+		Page<HandlingUnit> huList = huService.getHandlingUnitInMovementList("E38168866DA01385E04321A948A5DDE8", 1, 5);
+		return huList;
 	}
 	
 	@POST
