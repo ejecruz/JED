@@ -16,8 +16,8 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', functi
 				items = response.data.pageItems;
 				console.log(items);
 				this.isRefresh = false;
-				results.totalNoOfPage = items.totalNoOfPage;
-				results.totalNoOfRec = items.totalNoOfRec;
+				results.totalNoOfPage = response.data.pagesAvailable;
+				results.totalNoOfRec = items.length;
 				
 				$.each(items,function(index,value){
 					if($.inArray(value.destination,dest)==-1){

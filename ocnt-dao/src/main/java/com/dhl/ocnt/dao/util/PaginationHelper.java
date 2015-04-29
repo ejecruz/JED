@@ -39,10 +39,14 @@ public class PaginationHelper<E> {
 					DataAccessException {
 				final List pageItems = page.getPageItems();
 				int currentRow = 0;
-				while (rs.next() && currentRow < startRow + pageSize) {
-					if (currentRow >= startRow) {
-						pageItems.add(rowMapper.mapRow(rs, currentRow));
-					}
+//				while (rs.next() && currentRow < startRow + pageSize) {
+//					if (currentRow >= startRow) {
+//						pageItems.add(rowMapper.mapRow(rs, currentRow));
+//					}
+//					currentRow++;
+//				}
+				while (rs.next()){
+					pageItems.add(rowMapper.mapRow(rs, currentRow));
 					currentRow++;
 				}
 				return page;

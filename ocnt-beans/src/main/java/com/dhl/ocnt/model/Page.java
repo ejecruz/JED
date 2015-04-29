@@ -32,5 +32,14 @@ public class Page<T> {
     public List<T> getPageItems() {
         return pageItems;
     }
+    
+    @Override
+    public String toString() {
+    	StringBuilder sb = new StringBuilder();
+    	sb.append("items:"+getPageItems());
+    	sb.append("pageNumber:"+getPageNumber());
+    	sb.append("pageAvailable:"+getPagesAvailable());
+    	return sb.toString();
+    }
 	
 }

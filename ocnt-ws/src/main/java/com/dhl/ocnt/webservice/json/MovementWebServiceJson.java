@@ -8,6 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,8 @@ import com.dhl.ocnt.service.MovementService;
 @Path("/movement")
 public class MovementWebServiceJson {
 
+	private Logger logger = Logger.getLogger(MovementWebServiceJson.class);
+	
 	@Autowired
 	private MovementService movementService;
 	
@@ -67,8 +70,10 @@ public class MovementWebServiceJson {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Page<Movement> getMovement(MovementFilter movementFilter){
-		return movementService.getMovementList(movementFilter.getPlusDate(), movementFilter.getMinusDate(), 
+		Page<Movement> page =  movementService.getMovementList(movementFilter.getPlusDate(), movementFilter.getMinusDate(), 
 				1, 10, movementFilter.getLocation());
+		logger.info("Response:"+page);
+		return page;
 	}
 	
 	@POST

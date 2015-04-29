@@ -14,7 +14,7 @@
 								
 								addDynamicTabs();
 								addHotkeys();
-								$rootScope.location = 'KULXPC';
+								$rootScope.location = 'ICNGTW';
 								function addDynamicTabs() {
 									$scope.tabs = [
 											{
