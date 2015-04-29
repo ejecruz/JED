@@ -1,4 +1,4 @@
-<header>
+<header ng-controller="homeCtrl">
 			<nav>
 				<div class="navbar navbar-default navbar-fixed-top">
 					<div class="row">
@@ -18,7 +18,7 @@
 								Datetime:
 							</div>
 							<div id="currentFacility" class="">
-								Current Facility: <select ng-model="movementFilter.location">
+								Current Facility: <select ng-model="location">
 													<option val="KULXPC">KULXPC</option>
 												  </select>
 							</div>

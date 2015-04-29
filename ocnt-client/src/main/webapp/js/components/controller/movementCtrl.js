@@ -2,23 +2,27 @@
 	ocnt.app = angular.module('OCNT');
 
 	ocnt.app.controller('movementCtrl', [ '$scope', '$http','hotkeys','$state','MovementService','dataService','$interval',
-			function(scope, $http,hotkeys,$state,service,dataService,$interval) {
+			function($scope, $http,hotkeys,$state,service,dataService,$interval) {
 		 
 		 var ctrl = this;
 		 this.displayed = [];
-		 scope.mode = "Edit";
+		 $scope.mode = "Edit";
 		 var loadMovementTimer;
 		 var tableStateTemp;
 		 var refresh;
+		 
 		 this.callServer = function callServer(tableState) {
 			 tableStateTemp = tableState;
 			 ctrl.isLoading = true;
 			 
 			 var pagination = tableState.pagination;
-
+			 tableState.movementFilter = {};
+			 tableState.movementFilter.plusDate = 0;
+			 tableState.movementFilter.minusDate = 0;
+			 
 			 var start = pagination.start || 0;   
 			 var number = pagination.number || 10; 
-			 scope.totalNoOfRec = 0;
+			 $scope.totalNoOfRec = 0;
 			 service.retrievePageRecords(start, number, tableState,refresh).then(function (result) {
 				 tableState.pagination.numberOfPages = result.totalNoOfPage;
 				 tableState.pagination.numberOfRecords = result.totalNoOfRec;
@@ -27,13 +31,15 @@
 				 ctrl.displayed = result.data;
 				 ctrl.isLoading = false;
 			 });
-		 
+			 
+			 $scope.movementFilter = tableState.movementFilter; 
+			 $scope.movementFilter.location = $scope.location;
 		};
 		
-		scope.switchMode = function switchMode(){
-			 if(scope.mode == "Edit"){
-				 scope.mode = "View";
-				 scope.hideCol = true;
+		$scope.switchMode = function switchMode(){
+			 if($scope.mode == "Edit"){
+				 $scope.mode = "View";
+				 $scope.hideCol = true;
 				 if(angular.isDefined(loadMovementTimer)){
 					 return;
 				 }
@@ -42,8 +48,8 @@
 					 ctrl.callServer(tableStateTemp);
 				 },5000);
 			 }else{
-				 scope.mode = "Edit";
-				 scope.hideCol = false;
+				 $scope.mode = "Edit";
+				 $scope.hideCol = false;
 				 refresh = false;
 				 if(angular.isDefined(loadMovementTimer)){
 					 $interval.cancel(loadMovementTimer);
@@ -52,22 +58,22 @@
 			 }
 		 }
 		
-		scope.processOpt = function processOpt(row){
+		$scope.processOpt = function processOpt(row){
 			console.log(row);
 			dataService.set(row);
 			//$state.go('assignMovement');
 			$state.go('assignMovement', {}, {reload: true});
 		}
 		
-		scope.searchDayRange = function searchDayRange(minusDate,plusDate){
+		$scope.searchDayRange = function searchDayRange(){
 			 ctrl.isLoading = true;
 			 
 			 var pagination = tableStateTemp.pagination;
 
 			 var start = pagination.start || 0;   
 			 var number = pagination.number || 10; 
-			 scope.totalNoOfRec = 0;
-			 service.searchDayRange(start, number, tableStateTemp, true, minusDate,plusDate).then(function (result) {
+			 $scope.totalNoOfRec = 0;
+			 service.searchDayRange(start, number, tableStateTemp, true, $scope.movementFilter.minusDate,$scope.movementFilter.plusDate).then(function (result) {
 				 tableStateTemp.pagination.numberOfPages = result.totalNoOfPage;
 				 tableStateTemp.pagination.numberOfRecords = result.totalNoOfRec;
 				 ctrl.dest_filter = result.dest_filter;

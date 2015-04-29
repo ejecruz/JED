@@ -72,11 +72,11 @@ nav>.ng-scope ul {
 					Day Range: 
 					<img src="../img/minus-16.png"> 
 					<input type="text"
-						value="0" style="width: 30px; text-align: center;" ng-model="minusDate"> 
+						style="width: 30px; text-align: center;" ng-model="movementFilter.minusDate"> 
 					<input
-						type="text" value="0" style="width: 30px; text-align: center;" ng-model="plusDate">
+						type="text" style="width: 30px; text-align: center;" ng-model="movementFilter.plusDate">
 					<img src="../img/plus-16.png"> 
-					<button ng-click="searchDayRange(minusDate,plusDate)"
+					<button ng-click="searchDayRange()"
 						class="button"
 						style="display: inline;">Search</button>
 				</div>

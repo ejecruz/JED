@@ -1,6 +1,6 @@
 (function(ocnt){
 
-ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', function ($q, $filter, $timeout,$http,$scope) {
+ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', function ($q, $filter, $timeout,$http) {
 	
 	var items = [];
 	this.isRefresh = null;
@@ -10,8 +10,8 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', functi
 	
 	function retrieveMovementDetails(start, number, params,refresh,deferred, url){
 		if((refresh == null && this.isRefresh == null) || refresh || this.isRefresh){
-			console.log($scope.movementFilter);
-			$http.post(url,$scope.movementFilter).
+			console.log(params.movementFilter);
+			$http.post(url,params.movementFilter).
 			then(function(response){
 				items = response.data.pageItems;
 				console.log(items);
@@ -50,14 +50,9 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', functi
 		retrieveMovementDetails(start, number, params,refresh,deferred,movementUrl);
 		return deferred.promise;
 	}
-	
-	$scope.movementFilter.plusDate = 0;
-	$scope.movementFilter.minusDate = 0;
-	
+		
 	function searchDayRange(start, number, params, refresh, minusDate,plusDate){
 		var deferred = $q.defer();
-		$scope.movementFilter.plusDate = plusDate;
-		$scope.movementFilter.minusDate = minusDate;
 		retrieveMovementDetails(start, number, params,refresh,deferred,movementUrl);
 		return deferred.promise;
 	}

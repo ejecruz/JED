@@ -9,11 +9,12 @@
 							'$scope',
 							'hotkeys',
 							'$state',
-							function($scope, hotkeys, $state) {
+							'$rootScope',
+							function($scope, hotkeys, $state,$rootScope) {
 								
 								addDynamicTabs();
 								addHotkeys();
-								
+								$rootScope.location = 'KULXPC';
 								function addDynamicTabs() {
 									$scope.tabs = [
 											{
