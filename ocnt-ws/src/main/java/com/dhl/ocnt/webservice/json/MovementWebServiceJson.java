@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import com.dhl.ocnt.model.AssignMovementWrapper;
 import com.dhl.ocnt.model.HandlingUnit;
 import com.dhl.ocnt.model.Movement;
+import com.dhl.ocnt.model.MovementFilter;
 import com.dhl.ocnt.model.Page;
 import com.dhl.ocnt.service.MovementService;
 import com.dhl.webservice.dummy.CreateDummyData;
@@ -60,21 +61,12 @@ public class MovementWebServiceJson {
 	}
 	
 	@POST
-	@Path("generateJson/{location}")
+	@Path("getMovement")
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Page<Movement> getMovement(@PathParam("location") String location){
-		Page<Movement> list = movementService.getMovementList(200, 200, 1, 10, location);
-		return list;
-	}
-	
-	@POST
-	@Path("generateJson/{plus_date}/{minus_date}/{location}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Page<Movement> getMovement(@PathParam("plus_date") int plus_date, 
-											@PathParam("minus_date") int minus_date,
-											@PathParam("location") String location){
-		
-		return movementService.getMovementList(plus_date, minus_date, 1, 10, location);
+	public Page<Movement> getMovement(MovementFilter movementFilter){
+		return movementService.getMovementList(movementFilter.getPlusDate(), movementFilter.getMinusDate(), 
+				1, 10, movementFilter.getLocation());
 	}
 	
 	@POST

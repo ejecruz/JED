@@ -6,11 +6,12 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', functi
 	this.isRefresh = null;
 	var results = {};
 	var dest = [];
-	var movementUrl = urlPath + '/ocnt-ws/rest/movement/generateJson/KULGTW';
+	var movementUrl = urlPath + '/ocnt-ws/rest/movement/getMovement';
 	
 	function retrieveMovementDetails(start, number, params,refresh,deferred, url){
 		if((refresh == null && this.isRefresh == null) || refresh || this.isRefresh){
-			$http.post(url).
+			console.log($scope.movementFilter);
+			$http.post(url,$scope.movementFilter).
 			then(function(response){
 				items = response.data.pageItems;
 				console.log(items);
@@ -50,10 +51,14 @@ ocnt.app.factory('MovementService', ['$q', '$filter', '$timeout','$http', functi
 		return deferred.promise;
 	}
 	
+	$scope.movementFilter.plusDate = 0;
+	$scope.movementFilter.minusDate = 0;
+	
 	function searchDayRange(start, number, params, refresh, minusDate,plusDate){
 		var deferred = $q.defer();
-		var appendedValues = "/"+plusDate+"/"+minusDate;
-		retrieveMovementDetails(start, number, params,refresh,deferred,movementUrl+appendedValues);
+		$scope.movementFilter.plusDate = plusDate;
+		$scope.movementFilter.minusDate = minusDate;
+		retrieveMovementDetails(start, number, params,refresh,deferred,movementUrl);
 		return deferred.promise;
 	}
 	
