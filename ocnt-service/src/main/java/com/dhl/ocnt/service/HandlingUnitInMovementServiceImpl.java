@@ -17,4 +17,9 @@ public class HandlingUnitInMovementServiceImpl implements HandlingUnitInMovement
 	public Page<HandlingUnit> getHandlingUnitInMovementList(String movementId, int pageNo, int pageSize) {
 		return handlingUnitInMovementDao.getHandlingUnitInMovementList(movementId, pageNo, pageSize);
 	}
+	
+	@Override
+	public Page<HandlingUnit> getHandlingUnitNotAllocated(String movementId, int pageNo, int pageSize) {
+		return handlingUnitInMovementDao.getHandlingUnitNotAllocated(movementId, pageNo, pageSize);
+	}
 }

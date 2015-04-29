@@ -41,7 +41,7 @@ public class MovementWebServiceJson {
 		
 		//http://localhost:8080/ocnt-ws/rest/movement/getAssignMovementAllocatedDataAsJson
 		
-		Page<HandlingUnit> huList = huService.getHandlingUnitInMovementList("E38168866DA01385E04321A948A5DDE8", 1, 5);
+		Page<HandlingUnit> huList = huService.getHandlingUnitInMovementList(movementId, 1, 100);
 		return huList;
 	}
 	
@@ -58,7 +58,7 @@ public class MovementWebServiceJson {
 		
 		//http://localhost:8080/ocnt-ws/rest/movement/getAssignMovementNonAssignedDataAsJson
 		
-		Page<HandlingUnit> huList = huService.getHandlingUnitInMovementList("E38168866DA01385E04321A948A5DDE8", 1, 5);
+		Page<HandlingUnit> huList = huService.getHandlingUnitNotAllocated(movementId, 1, 100);
 		return huList;
 	}
 	
