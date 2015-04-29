@@ -6,5 +6,7 @@ import com.dhl.ocnt.model.Page;
 public interface HandlingUnitInMovementService {
 	
 	Page<HandlingUnit> getHandlingUnitInMovementList(String movementId, int pageNo, int pageSize);
+	
+	Page<HandlingUnit> getHandlingUnitNotAllocated(String movementId, int pageNo, int pageSize);
 
 }
